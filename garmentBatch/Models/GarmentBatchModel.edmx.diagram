@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="83b868fc1ca24000b537135f004934c4" Name="Diagram1" ZoomLevel="62">
+        <EntityTypeShape EntityType="GarmentBatchModel.Batches_01" Width="1.5" PointX="10.5" PointY="18" />
+        <EntityTypeShape EntityType="GarmentBatchModel.Broker" Width="1.5" PointX="0.75" PointY="23" />
+        <EntityTypeShape EntityType="GarmentBatchModel.Count" Width="1.5" PointX="17.75" PointY="8.875" />
+        <EntityTypeShape EntityType="GarmentBatchModel.CurrentStock" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GarmentBatchModel.Inspector" Width="1.5" PointX="6" PointY="25.5" />
+        <EntityTypeShape EntityType="GarmentBatchModel.localuser" Width="1.5" PointX="15.25" PointY="27.5" />
+        <EntityTypeShape EntityType="GarmentBatchModel.localuser1" Width="1.5" PointX="10.75" PointY="27.125" />
+        <EntityTypeShape EntityType="GarmentBatchModel.localuser3" Width="1.5" PointX="15.25" PointY="32.5" />
+        <EntityTypeShape EntityType="GarmentBatchModel.localuser4" Width="1.5" PointX="13" PointY="23.75" />
+        <EntityTypeShape EntityType="GarmentBatchModel.machin" Width="1.5" PointX="6" PointY="28" />
+        <EntityTypeShape EntityType="GarmentBatchModel.Mill" Width="1.5" PointX="17.75" PointY="12.625" />
+        <EntityTypeShape EntityType="GarmentBatchModel.module" Width="1.5" PointX="16" PointY="24.25" />
+        <EntityTypeShape EntityType="GarmentBatchModel.moduleuser" Width="1.5" PointX="18.25" PointY="29" />
+        <EntityTypeShape EntityType="GarmentBatchModel.packSlip_002" Width="1.5" PointX="12.75" PointY="13.5" />
+        <EntityTypeShape EntityType="GarmentBatchModel.PackSliphead" Width="1.5" PointX="10.5" PointY="11.75" />
+        <EntityTypeShape EntityType="GarmentBatchModel.Quality" Width="1.5" PointX="3" PointY="17.875" />
+        <EntityTypeShape EntityType="GarmentBatchModel.sales001_00" Width="1.5" PointX="5.25" PointY="33.125" />
+        <EntityTypeShape EntityType="GarmentBatchModel.sales001_01" Width="1.5" PointX="5.25" PointY="20.625" />
+        <EntityTypeShape EntityType="GarmentBatchModel.SetBeem" Width="1.5" PointX="6" PointY="9.375" />
+        <EntityTypeShape EntityType="GarmentBatchModel.SetCreation" Width="1.5" PointX="3.75" PointY="9.125" />
+        <EntityTypeShape EntityType="GarmentBatchModel.Stack" Width="1.5" PointX="8.25" PointY="30.5" />
+        <AssociationConnector Association="GarmentBatchModel.FK_localuser4_localuser1" />
+        <AssociationConnector Association="GarmentBatchModel.FK_moduleuser_Modules" />
+        <AssociationConnector Association="GarmentBatchModel.FK_packSlip_002_PackSliphead" />
+        <AssociationConnector Association="GarmentBatchModel.FK_PackSliphead_Qualities" />
+        <AssociationConnector Association="GarmentBatchModel.FK_sales001_01_Qualities" />
+        <AssociationConnector Association="GarmentBatchModel.FK_SetBeem_SetCreation" />
+        <EntityTypeShape EntityType="GarmentBatchModel.PackSlipReqdetl" Width="1.5" PointX="17.375" PointY="21" />
+        <EntityTypeShape EntityType="GarmentBatchModel.mst011" Width="1.5" PointX="0.75" PointY="16" />
+        <AssociationConnector Association="GarmentBatchModel.FK_PackSliphead_mst011" />
+        <EntityTypeShape EntityType="GarmentBatchModel.grade" Width="1.5" PointX="3.75" PointY="0.875" />
+        <EntityTypeShape EntityType="GarmentBatchModel.mst004" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="GarmentBatchModel.mst011_01" Width="1.5" PointX="5.25" PointY="13" />
+        <AssociationConnector Association="GarmentBatchModel.FK_mst011_01_mst011" />
+        <AssociationConnector Association="GarmentBatchModel.FK_PackSliphead_PackSliphead" />
+        <AssociationConnector Association="GarmentBatchModel.FK_SetBeem_SetBeem" />
+        <EntityTypeShape EntityType="GarmentBatchModel.localuser2" Width="1.5" PointX="13" PointY="27.5" />
+        <AssociationConnector Association="GarmentBatchModel.FK_localuser_localuser2" />
+        <AssociationConnector Association="GarmentBatchModel.FK_localuser2_localuser1" />
+        <AssociationConnector Association="GarmentBatchModel.FK_localuser3_localuser2" />
+        <AssociationConnector Association="GarmentBatchModel.FK_moduleuser_localuser2" />
+        <EntityTypeShape EntityType="GarmentBatchModel.Batches_02" Width="1.5" PointX="22.875" PointY="11" />
+        <EntityTypeShape EntityType="GarmentBatchModel.PackSlipDetl" Width="1.5" PointX="25.875" PointY="10.625" />
+        <AssociationConnector Association="GarmentBatchModel.FK_PackSlipDetl_PackSliphead" />
+        <EntityTypeShape EntityType="GarmentBatchModel.mst005" Width="1.5" PointX="3.75" PointY="28.25" />
+        <EntityTypeShape EntityType="GarmentBatchModel.mst005_01" Width="1.5" PointX="8" PointY="16.375" />
+        <AssociationConnector Association="GarmentBatchModel.FK_mst005_01_mst004" />
+        <AssociationConnector Association="GarmentBatchModel.FK_mst005_01_mst005" />
+        <EntityTypeShape EntityType="GarmentBatchModel.Batch" Width="1.5" PointX="11.25" PointY="3.625" />
+        <EntityTypeShape EntityType="GarmentBatchModel.product" Width="1.5" PointX="0.75" PointY="12" />
+        <AssociationConnector Association="GarmentBatchModel.FK_Batches_01_Batches" />
+        <AssociationConnector Association="GarmentBatchModel.FK_batches_02_batches" />
+        <AssociationConnector Association="GarmentBatchModel.FK_Batches_grades" />
+        <AssociationConnector Association="GarmentBatchModel.FK_Batches_Inspectors" />
+        <AssociationConnector Association="GarmentBatchModel.FK_Batches_Inspectors1" />
+        <AssociationConnector Association="GarmentBatchModel.FK_Batches_machins" />
+        <AssociationConnector Association="GarmentBatchModel.FK_Batches_products" />
+        <AssociationConnector Association="GarmentBatchModel.FK_Batches_SetBeem" />
+        <AssociationConnector Association="GarmentBatchModel.FK_PackSlipDetl_Batches" />
+        <AssociationConnector Association="GarmentBatchModel.FK_PackSlipReqdetl_Batches" />
+        <AssociationConnector Association="GarmentBatchModel.FK_PackSliphead_products" />
+        <AssociationConnector Association="GarmentBatchModel.FK_Qualities_products" />
+        <AssociationConnector Association="GarmentBatchModel.FK_Batches_Batches" />
+        <AssociationConnector Association="GarmentBatchModel.FK_grades_grades" />
+        <EntityTypeShape EntityType="GarmentBatchModel.PackSlipReqhead" Width="1.5" PointX="8.5" PointY="21.125" />
+        <AssociationConnector Association="GarmentBatchModel.FK_PackSlipReqhead_mst011" />
+        <AssociationConnector Association="GarmentBatchModel.FK_PackSliphead_PackSlipReqhead" />
+        <AssociationConnector Association="GarmentBatchModel.FK_PackSlipReqdetl_PackSlipReqhead" />
+        <AssociationConnector Association="GarmentBatchModel.FK_PackSlipReqhead_products" />
+        <AssociationConnector Association="GarmentBatchModel.FK_PackSlipReqhead_sales001_01" />
+        <AssociationConnector Association="GarmentBatchModel.FK_PackSlipRequest_Qualities" />
+        <EntityTypeShape EntityType="GarmentBatchModel.mst014" Width="1.5" PointX="3" PointY="12.625" />
+        <AssociationConnector Association="GarmentBatchModel.FK_Batches_mst014" />
+        <AssociationConnector Association="GarmentBatchModel.FK_mst014_mst014" />
+        <AssociationConnector Association="GarmentBatchModel.FK_Stacks_mst014" />
+        <EntityTypeShape EntityType="GarmentBatchModel.sales001" Width="1.5" PointX="3" PointY="21.75" />
+        <AssociationConnector Association="GarmentBatchModel.FK_Batches_sales001" />
+        <AssociationConnector Association="GarmentBatchModel.FK_sales001_Broker" />
+        <AssociationConnector Association="GarmentBatchModel.FK_sales001_customers" />
+        <AssociationConnector Association="GarmentBatchModel.FK_sales001_00_sales001" />
+        <AssociationConnector Association="GarmentBatchModel.FK_sales001_01_sales001" />
+        <EntityTypeShape EntityType="GarmentBatchModel.mst006" Width="1.5" PointX="0.75" PointY="8.625" />
+        <AssociationConnector Association="GarmentBatchModel.FK_mst004_mst006" />
+        <AssociationConnector Association="GarmentBatchModel.FK_mst011_01_mst006" />
+        <AssociationConnector Association="GarmentBatchModel.FK_mst014_mst006" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

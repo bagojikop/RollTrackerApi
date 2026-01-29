@@ -1,0 +1,3403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GarmentBatchModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Batches">
+          <Key>
+            <PropertyRef Name="finYear" />
+            <PropertyRef Name="loomNo" />
+            <PropertyRef Name="BatchNo" />
+          </Key>
+          <Property Name="finYear" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="loomNo" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="BatchNo" Type="int" Nullable="false" />
+          <Property Name="BatchCreated" Type="datetime" Nullable="false" />
+          <Property Name="inspectorId" Type="int" />
+          <Property Name="inspectedDate" Type="datetime" />
+          <Property Name="prodCode" Type="int" />
+          <Property Name="QcCode" Type="varchar" MaxLength="4" />
+          <Property Name="GwnCode" Type="int" />
+          <Property Name="stacksId" Type="varchar" MaxLength="6" />
+          <Property Name="Mtrs" Type="int" />
+          <Property Name="Weight" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="width" Type="varchar" MaxLength="50" />
+          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="machinId" Type="int" />
+          <Property Name="verifiedId" Type="int" />
+          <Property Name="Rejected" Type="bit" Nullable="false" />
+          <Property Name="Rejected_Reason" Type="nvarchar(max)" />
+          <Property Name="transtype" Type="tinyint" Nullable="false" />
+          <Property Name="narration" Type="nvarchar" MaxLength="100" />
+          <Property Name="GradeId" Type="int" Nullable="false" />
+          <Property Name="setNo" Type="varchar" MaxLength="16" />
+          <Property Name="kara" Type="decimal" Precision="7" Scale="3" />
+          <Property Name="weft" Type="decimal" Precision="7" Scale="3" />
+          <Property Name="pick" Type="decimal" Precision="7" Scale="3" />
+          <Property Name="sample_mtr" Type="decimal" Precision="7" Scale="3" />
+          <Property Name="cutpiece_mtr" Type="decimal" Precision="7" Scale="3" />
+          <Property Name="beamNo" Type="varchar" MaxLength="10" />
+          <Property Name="gray_mtr" Type="decimal" Precision="7" Scale="3" />
+          <Property Name="std_width" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="std_pick" Type="decimal" Precision="7" Scale="3" />
+          <Property Name="std_weight" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="CreatedUser" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedUser" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="finished_Mtr" Type="decimal" Precision="7" Scale="3" />
+          <Property Name="points" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="grading" Type="varchar" MaxLength="100" />
+          <Property Name="dp" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="sales_orderId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Batches_01">
+          <Key>
+            <PropertyRef Name="detl_id" />
+          </Key>
+          <Property Name="detl_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="finYear" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="loomNo" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="BatchNo" Type="int" Nullable="false" />
+          <Property Name="attachment" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="attachdescr" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Batches_02">
+          <Key>
+            <PropertyRef Name="pickid" />
+          </Key>
+          <Property Name="pickid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="finyear" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="loomNo" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="batchNo" Type="int" Nullable="false" />
+          <Property Name="pick" Type="decimal" Precision="7" Scale="3" Nullable="false" />
+          <Property Name="weft" Type="decimal" Precision="7" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Broker">
+          <Key>
+            <PropertyRef Name="brokerCode" />
+          </Key>
+          <Property Name="brokerCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="brokerName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="brokerAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="contactNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="GSTN" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Counts">
+          <Key>
+            <PropertyRef Name="CountId" />
+          </Key>
+          <Property Name="CountId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="countValue" Type="decimal" Precision="7" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CurrentStock">
+          <Key>
+            <PropertyRef Name="finyear" />
+            <PropertyRef Name="loomNo" />
+            <PropertyRef Name="BatchNo" />
+          </Key>
+          <Property Name="finyear" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="loomNo" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="BatchNo" Type="int" Nullable="false" />
+          <Property Name="Mtrs" Type="int" Nullable="false" />
+          <Property Name="scannedDate" Type="datetime" />
+          <Property Name="createdbyid" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="grades">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Grade" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inspectors">
+          <Key>
+            <PropertyRef Name="inspectorId" />
+          </Key>
+          <Property Name="inspectorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="inspectorName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="localuser">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="localuser1">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userlevel_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="comments" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="localuser2">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="10" />
+          <Property Name="UserLongName" Type="varchar" MaxLength="100" />
+          <Property Name="UserLevelID" Type="int" Nullable="false" />
+          <Property Name="mobileno" Type="varchar" MaxLength="50" />
+          <Property Name="email_id" Type="nvarchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="localuser3">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="A" Type="bit" Nullable="false" />
+          <Property Name="E" Type="bit" Nullable="false" />
+          <Property Name="D" Type="bit" Nullable="false" />
+          <Property Name="L" Type="bit" Nullable="false" />
+          <Property Name="P" Type="bit" Nullable="false" />
+          <Property Name="SysAdmin" Type="bit" Nullable="false" />
+          <Property Name="O" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="localuser4">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="A" Type="bit" Nullable="false" />
+          <Property Name="E" Type="bit" Nullable="false" />
+          <Property Name="D" Type="bit" Nullable="false" />
+          <Property Name="L" Type="bit" Nullable="false" />
+          <Property Name="P" Type="bit" Nullable="false" />
+          <Property Name="B" Type="bit" Nullable="false" />
+          <Property Name="R" Type="bit" Nullable="false" />
+          <Property Name="O" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="machins">
+          <Key>
+            <PropertyRef Name="machinId" />
+          </Key>
+          <Property Name="machinId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MachinName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mill">
+          <Key>
+            <PropertyRef Name="millCode" />
+          </Key>
+          <Property Name="millCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="millName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GSTIN" Type="varchar" MaxLength="15" />
+          <Property Name="address" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="modules">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="modulename" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="moduleuser">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="moduleid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mst004">
+          <Key>
+            <PropertyRef Name="firm_code" />
+          </Key>
+          <Property Name="firm_code" Type="int" Nullable="false" />
+          <Property Name="firm_name" Type="nvarchar" MaxLength="120" Nullable="false" />
+          <Property Name="firm_alias" Type="nvarchar" MaxLength="50" />
+          <Property Name="firm_address" Type="varchar" MaxLength="200" />
+          <Property Name="firm_fno" Type="varchar" MaxLength="50" />
+          <Property Name="email_id" Type="varchar" MaxLength="50" />
+          <Property Name="web_address" Type="varchar" MaxLength="50" />
+          <Property Name="firm_cityId" Type="int" />
+          <Property Name="Jurisdiction" Type="varchar(max)" />
+          <Property Name="firm_cin" Type="varchar" MaxLength="50" />
+          <Property Name="firm_pan" Type="varchar" MaxLength="50" />
+          <Property Name="active" Type="bit" Nullable="false" />
+          <Property Name="firm_bank_name" Type="varchar" MaxLength="100" />
+          <Property Name="firm_bank_accno" Type="varchar" MaxLength="20" />
+          <Property Name="firm_bank_ifsc" Type="varchar" MaxLength="20" />
+          <Property Name="natofbus" Type="int" />
+          <Property Name="CreatedUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDt" Type="datetime" />
+          <Property Name="ModifiedDt" Type="datetime" />
+          <Property Name="is_membership" Type="bit" Nullable="false" />
+          <Property Name="firm_swift_code" Type="varchar" MaxLength="20" />
+          <Property Name="firm_Bankbranch" Type="varchar" MaxLength="50" />
+          <Property Name="eic_no" Type="varchar" MaxLength="15" />
+          <Property Name="firm_bank_holder" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="mst005">
+          <Key>
+            <PropertyRef Name="div_id" />
+          </Key>
+          <Property Name="finid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="div_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="from_div_id" Type="varchar" MaxLength="10" />
+          <Property Name="fdt" Type="datetime" Nullable="false" />
+          <Property Name="tdt" Type="datetime" Nullable="false" />
+          <Property Name="prefix" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="CreatedUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDt" Type="datetime" />
+          <Property Name="ModifiedDt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="mst005_01">
+          <Key>
+            <PropertyRef Name="firm_id" />
+            <PropertyRef Name="div_id" />
+          </Key>
+          <Property Name="firm_id" Type="int" Nullable="false" />
+          <Property Name="div_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+          <Property Name="cf_div_id" Type="varchar" MaxLength="10" />
+          <Property Name="freez" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mst006">
+          <Key>
+            <PropertyRef Name="City_id" />
+          </Key>
+          <Property Name="City_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="City_pin" Type="int" />
+          <Property Name="Taluka_id" Type="int" Nullable="false" />
+          <Property Name="CreatedUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDt" Type="datetime" />
+          <Property Name="ModifiedDt" Type="datetime" />
+          <Property Name="Country_Code" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mst011">
+          <Key>
+            <PropertyRef Name="acc_code" />
+          </Key>
+          <Property Name="acc_code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sg_code" Type="int" Nullable="false" />
+          <Property Name="Acc_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="acc_alias" Type="nvarchar" MaxLength="10" />
+          <Property Name="CreatedUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDt" Type="datetime" />
+          <Property Name="ModifiedDt" Type="datetime" />
+          <Property Name="AllowAllFirm" Type="bit" />
+        </EntityType>
+        <EntityType Name="mst011_01">
+          <Key>
+            <PropertyRef Name="acc_code" />
+          </Key>
+          <Property Name="acc_code" Type="int" Nullable="false" />
+          <Property Name="acc_address" Type="varchar(max)" />
+          <Property Name="city_code" Type="int" />
+          <Property Name="contact_person" Type="varchar" MaxLength="50" />
+          <Property Name="contact_designation" Type="varchar" MaxLength="50" />
+          <Property Name="contact_mobile_no" Type="varchar" MaxLength="50" />
+          <Property Name="off_tel_no" Type="varchar" MaxLength="50" />
+          <Property Name="email_id" Type="varchar" MaxLength="50" />
+          <Property Name="year_of_establishment" Type="varchar" MaxLength="50" />
+          <Property Name="website" Type="varchar" MaxLength="100" />
+          <Property Name="pan_no" Type="varchar" MaxLength="50" />
+          <Property Name="cin_no" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="mst014">
+          <Key>
+            <PropertyRef Name="L_Id" />
+          </Key>
+          <Property Name="L_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="L_Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="L_Alias" Type="varchar" MaxLength="6" />
+          <Property Name="L_Address" Type="varchar(max)" />
+          <Property Name="L_city_id" Type="int" />
+          <Property Name="branch_id" Type="char" MaxLength="3" />
+          <Property Name="in_type" Type="bit" />
+          <Property Name="CreatedUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDt" Type="datetime" />
+          <Property Name="ModifiedDt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="packSlip_002">
+          <Key>
+            <PropertyRef Name="SlipId" />
+          </Key>
+          <Property Name="SlipId" Type="int" Nullable="false" />
+          <Property Name="vehical_img" Type="nvarchar(max)" />
+          <Property Name="terms" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PackSlipDetl">
+          <Key>
+            <PropertyRef Name="slipdetlId" />
+          </Key>
+          <Property Name="slipdetlId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SlipId" Type="int" Nullable="false" />
+          <Property Name="finyear" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="loomNo" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="BatchNo" Type="int" Nullable="false" />
+          <Property Name="mtr" Type="int" Nullable="false" />
+          <Property Name="weight" Type="decimal" Precision="12" Scale="3" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="50" />
+          <Property Name="scanned" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PackSliphead">
+          <Key>
+            <PropertyRef Name="SlipId" />
+          </Key>
+          <Property Name="SlipId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="finyear" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="SlipNo" Type="int" Nullable="false" />
+          <Property Name="custId" Type="int" Nullable="false" />
+          <Property Name="SlipDate" Type="date" Nullable="false" />
+          <Property Name="prodCode" Type="int" Nullable="false" />
+          <Property Name="QcCode" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Nar" Type="nvarchar(max)" />
+          <Property Name="vehicleNo" Type="varchar" MaxLength="10" />
+          <Property Name="totalMtrs" Type="int" />
+          <Property Name="totalWeight" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="req_id" Type="int" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="CreatedUser" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedUser" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="dctype" Type="int" Nullable="false" />
+          <Property Name="style_id" Type="bigint" />
+          <Property Name="invoiceNo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PackSlipReqdetl">
+          <Key>
+            <PropertyRef Name="detl_id" />
+          </Key>
+          <Property Name="detl_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="req_id" Type="int" Nullable="false" />
+          <Property Name="finyear" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="loomNo" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="BatchNo" Type="int" Nullable="false" />
+          <Property Name="mtr" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PackSlipReqhead">
+          <Key>
+            <PropertyRef Name="req_id" />
+          </Key>
+          <Property Name="req_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="finyear" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="req_no" Type="int" Nullable="false" />
+          <Property Name="req_date" Type="date" Nullable="false" />
+          <Property Name="prodCode" Type="int" Nullable="false" />
+          <Property Name="QcCode" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="totalMtrs" Type="int" Nullable="false" />
+          <Property Name="accept" Type="bit" Nullable="false" />
+          <Property Name="CreatedUser" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedUser" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="so_detl" Type="bigint" />
+          <Property Name="cust_id" Type="int" />
+          <Property Name="naration" Type="nvarchar(max)" />
+          <Property Name="grade_id" Type="tinyint" Nullable="false" />
+          <Property Name="status_id" Type="tinyint" Nullable="false" />
+          <Property Name="scannedMtrs" Type="int" />
+          <Property Name="isOrderComplete" Type="bit" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="prodCode" />
+          </Key>
+          <Property Name="prodCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="prodName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="gms_limit" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="gpm_min" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="gpm" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="costId" Type="int" />
+          <Property Name="shrinkage" Type="numeric" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="composition" Type="nvarchar" MaxLength="200" />
+          <Property Name="color" Type="nvarchar" MaxLength="100" />
+          <Property Name="weightOz" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Qualities">
+          <Key>
+            <PropertyRef Name="QcCode" />
+            <PropertyRef Name="prodCode" />
+          </Key>
+          <Property Name="QcCode" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="prodCode" Type="int" Nullable="false" />
+          <Property Name="QcDescription" Type="nvarchar" MaxLength="100" />
+          <Property Name="Qcalias" Type="varchar" MaxLength="10" />
+          <Property Name="std_width" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sales001">
+          <Key>
+            <PropertyRef Name="vch_id" />
+          </Key>
+          <Property Name="vch_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fin_year" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="vch_no" Type="int" Nullable="false" />
+          <Property Name="vch_date" Type="date" Nullable="false" />
+          <Property Name="order_no" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="ref_no" Type="varchar" MaxLength="15" />
+          <Property Name="ref_date" Type="date" />
+          <Property Name="cust_id" Type="int" Nullable="false" />
+          <Property Name="cust_gstin" Type="nvarchar" MaxLength="15" />
+          <Property Name="broker_code" Type="int" />
+          <Property Name="broker_gstin" Type="nvarchar" MaxLength="15" />
+          <Property Name="delivery_schedule" Type="varchar(max)" Nullable="false" />
+          <Property Name="total_amt" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="naration" Type="nvarchar(max)" />
+          <Property Name="delivery_period" Type="int" Nullable="false" />
+          <Property Name="ICE_gstTaxpayer" Type="nvarchar" MaxLength="50" />
+          <Property Name="IF_goodsImportar" Type="nvarchar" MaxLength="50" />
+          <Property Name="RC_costomRegister" Type="nvarchar" MaxLength="50" />
+          <Property Name="portName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sales001_00">
+          <Key>
+            <PropertyRef Name="vch_id" />
+          </Key>
+          <Property Name="vch_id" Type="bigint" Nullable="false" />
+          <Property Name="CreatedUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDt" Type="datetime" />
+          <Property Name="ModifiedUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sales001_01">
+          <Key>
+            <PropertyRef Name="detl_id" />
+          </Key>
+          <Property Name="detl_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vch_id" Type="bigint" Nullable="false" />
+          <Property Name="qc_code" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="prod_code" Type="int" Nullable="false" />
+          <Property Name="roll" Type="int" Nullable="false" />
+          <Property Name="mtrs" Type="int" Nullable="false" />
+          <Property Name="amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="naration" Type="varchar(max)" />
+          <Property Name="rate" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="grade_id" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="SetBeem">
+          <Key>
+            <PropertyRef Name="setNo" />
+            <PropertyRef Name="beemNo" />
+          </Key>
+          <Property Name="setNo" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="beemNo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="deyingLength" Type="decimal" Precision="12" Scale="3" Nullable="false" />
+          <Property Name="opvchid" Type="bigint" />
+          <Property Name="invchid" Type="bigint" />
+          <Property Name="finyear" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="sb_created_date" Type="date" Nullable="false" />
+          <Property Name="rate" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="detl_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="SetCreation">
+          <Key>
+            <PropertyRef Name="setNo" />
+          </Key>
+          <Property Name="setNo" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="warpCount" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="rs" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="createdDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedUser" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedUser" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Stacks">
+          <Key>
+            <PropertyRef Name="gwnCode" />
+            <PropertyRef Name="stacksId" />
+          </Key>
+          <Property Name="gwnCode" Type="int" Nullable="false" />
+          <Property Name="stacksId" Type="varchar" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Batches_01_Batches">
+          <End Role="Batches" Type="Self.Batches" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Batches_01" Type="Self.Batches_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batches">
+              <PropertyRef Name="finYear" />
+              <PropertyRef Name="loomNo" />
+              <PropertyRef Name="BatchNo" />
+            </Principal>
+            <Dependent Role="Batches_01">
+              <PropertyRef Name="finYear" />
+              <PropertyRef Name="loomNo" />
+              <PropertyRef Name="BatchNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_batches_02_batches">
+          <End Role="Batches" Type="Self.Batches" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Batches_02" Type="Self.Batches_02" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batches">
+              <PropertyRef Name="finYear" />
+              <PropertyRef Name="loomNo" />
+              <PropertyRef Name="BatchNo" />
+            </Principal>
+            <Dependent Role="Batches_02">
+              <PropertyRef Name="finyear" />
+              <PropertyRef Name="loomNo" />
+              <PropertyRef Name="batchNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batches_grades">
+          <End Role="grades" Type="Self.grades" Multiplicity="1" />
+          <End Role="Batches" Type="Self.Batches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grades">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Batches">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batches_Inspectors">
+          <End Role="Inspectors" Type="Self.Inspectors" Multiplicity="0..1" />
+          <End Role="Batches" Type="Self.Batches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inspectors">
+              <PropertyRef Name="inspectorId" />
+            </Principal>
+            <Dependent Role="Batches">
+              <PropertyRef Name="inspectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batches_Inspectors1">
+          <End Role="Inspectors" Type="Self.Inspectors" Multiplicity="0..1" />
+          <End Role="Batches" Type="Self.Batches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inspectors">
+              <PropertyRef Name="inspectorId" />
+            </Principal>
+            <Dependent Role="Batches">
+              <PropertyRef Name="verifiedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batches_machins">
+          <End Role="machins" Type="Self.machins" Multiplicity="0..1" />
+          <End Role="Batches" Type="Self.Batches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="machins">
+              <PropertyRef Name="machinId" />
+            </Principal>
+            <Dependent Role="Batches">
+              <PropertyRef Name="machinId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batches_mst014">
+          <End Role="mst014" Type="Self.mst014" Multiplicity="0..1" />
+          <End Role="Batches" Type="Self.Batches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mst014">
+              <PropertyRef Name="L_Id" />
+            </Principal>
+            <Dependent Role="Batches">
+              <PropertyRef Name="GwnCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batches_products">
+          <End Role="Qualities" Type="Self.Qualities" Multiplicity="0..1" />
+          <End Role="Batches" Type="Self.Batches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qualities">
+              <PropertyRef Name="QcCode" />
+              <PropertyRef Name="prodCode" />
+            </Principal>
+            <Dependent Role="Batches">
+              <PropertyRef Name="QcCode" />
+              <PropertyRef Name="prodCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batches_sales001">
+          <End Role="sales001" Type="Self.sales001" Multiplicity="0..1" />
+          <End Role="Batches" Type="Self.Batches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sales001">
+              <PropertyRef Name="vch_id" />
+            </Principal>
+            <Dependent Role="Batches">
+              <PropertyRef Name="sales_orderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batches_SetBeem">
+          <End Role="SetBeem" Type="Self.SetBeem" Multiplicity="0..1" />
+          <End Role="Batches" Type="Self.Batches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SetBeem">
+              <PropertyRef Name="setNo" />
+              <PropertyRef Name="beemNo" />
+            </Principal>
+            <Dependent Role="Batches">
+              <PropertyRef Name="setNo" />
+              <PropertyRef Name="beamNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_localuser_localuser2">
+          <End Role="localuser2" Type="Self.localuser2" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="localuser" Type="Self.localuser" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="localuser2">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="localuser">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_localuser2_localuser1">
+          <End Role="localuser1" Type="Self.localuser1" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="localuser2" Type="Self.localuser2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="localuser1">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="localuser2">
+              <PropertyRef Name="UserLevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_localuser3_localuser2">
+          <End Role="localuser2" Type="Self.localuser2" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="localuser3" Type="Self.localuser3" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="localuser2">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="localuser3">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_localuser4_localuser1">
+          <End Role="localuser1" Type="Self.localuser1" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="localuser4" Type="Self.localuser4" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="localuser1">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="localuser4">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_moduleuser_localuser2">
+          <End Role="localuser2" Type="Self.localuser2" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="moduleuser" Type="Self.moduleuser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="localuser2">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="moduleuser">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_moduleuser_Modules">
+          <End Role="modules" Type="Self.modules" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="moduleuser" Type="Self.moduleuser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modules">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="moduleuser">
+              <PropertyRef Name="moduleid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mst004_mst006">
+          <End Role="mst006" Type="Self.mst006" Multiplicity="0..1" />
+          <End Role="mst004" Type="Self.mst004" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mst006">
+              <PropertyRef Name="City_id" />
+            </Principal>
+            <Dependent Role="mst004">
+              <PropertyRef Name="firm_cityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mst005_01_mst004">
+          <End Role="mst004" Type="Self.mst004" Multiplicity="1" />
+          <End Role="mst005_01" Type="Self.mst005_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mst004">
+              <PropertyRef Name="firm_code" />
+            </Principal>
+            <Dependent Role="mst005_01">
+              <PropertyRef Name="firm_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mst005_01_mst005">
+          <End Role="mst005" Type="Self.mst005" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="mst005_01" Type="Self.mst005_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mst005">
+              <PropertyRef Name="div_id" />
+            </Principal>
+            <Dependent Role="mst005_01">
+              <PropertyRef Name="div_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mst011_01_mst006">
+          <End Role="mst006" Type="Self.mst006" Multiplicity="0..1" />
+          <End Role="mst011_01" Type="Self.mst011_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mst006">
+              <PropertyRef Name="City_id" />
+            </Principal>
+            <Dependent Role="mst011_01">
+              <PropertyRef Name="city_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mst011_01_mst011">
+          <End Role="mst011" Type="Self.mst011" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="mst011_01" Type="Self.mst011_01" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="mst011">
+              <PropertyRef Name="acc_code" />
+            </Principal>
+            <Dependent Role="mst011_01">
+              <PropertyRef Name="acc_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mst014_mst006">
+          <End Role="mst006" Type="Self.mst006" Multiplicity="0..1" />
+          <End Role="mst014" Type="Self.mst014" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mst006">
+              <PropertyRef Name="City_id" />
+            </Principal>
+            <Dependent Role="mst014">
+              <PropertyRef Name="L_city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mst014_mst014">
+          <End Role="mst014" Type="Self.mst014" Multiplicity="1" />
+          <End Role="mst0141" Type="Self.mst014" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="mst014">
+              <PropertyRef Name="L_Id" />
+            </Principal>
+            <Dependent Role="mst0141">
+              <PropertyRef Name="L_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_packSlip_002_PackSliphead">
+          <End Role="PackSliphead" Type="Self.PackSliphead" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="packSlip_002" Type="Self.packSlip_002" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PackSliphead">
+              <PropertyRef Name="SlipId" />
+            </Principal>
+            <Dependent Role="packSlip_002">
+              <PropertyRef Name="SlipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSlipDetl_Batches">
+          <End Role="Batches" Type="Self.Batches" Multiplicity="1" />
+          <End Role="PackSlipDetl" Type="Self.PackSlipDetl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batches">
+              <PropertyRef Name="finYear" />
+              <PropertyRef Name="loomNo" />
+              <PropertyRef Name="BatchNo" />
+            </Principal>
+            <Dependent Role="PackSlipDetl">
+              <PropertyRef Name="finyear" />
+              <PropertyRef Name="loomNo" />
+              <PropertyRef Name="BatchNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSlipDetl_PackSliphead">
+          <End Role="PackSliphead" Type="Self.PackSliphead" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PackSlipDetl" Type="Self.PackSlipDetl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PackSliphead">
+              <PropertyRef Name="SlipId" />
+            </Principal>
+            <Dependent Role="PackSlipDetl">
+              <PropertyRef Name="SlipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSliphead_mst011">
+          <End Role="mst011" Type="Self.mst011" Multiplicity="1" />
+          <End Role="PackSliphead" Type="Self.PackSliphead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mst011">
+              <PropertyRef Name="acc_code" />
+            </Principal>
+            <Dependent Role="PackSliphead">
+              <PropertyRef Name="custId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSliphead_PackSliphead">
+          <End Role="PackSliphead" Type="Self.PackSliphead" Multiplicity="1" />
+          <End Role="PackSliphead1" Type="Self.PackSliphead" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PackSliphead">
+              <PropertyRef Name="SlipId" />
+            </Principal>
+            <Dependent Role="PackSliphead1">
+              <PropertyRef Name="SlipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSliphead_PackSlipReqhead">
+          <End Role="PackSlipReqhead" Type="Self.PackSlipReqhead" Multiplicity="0..1" />
+          <End Role="PackSliphead" Type="Self.PackSliphead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PackSlipReqhead">
+              <PropertyRef Name="req_id" />
+            </Principal>
+            <Dependent Role="PackSliphead">
+              <PropertyRef Name="req_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSliphead_products">
+          <End Role="products" Type="Self.products" Multiplicity="1" />
+          <End Role="PackSliphead" Type="Self.PackSliphead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="prodCode" />
+            </Principal>
+            <Dependent Role="PackSliphead">
+              <PropertyRef Name="prodCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSliphead_Qualities">
+          <End Role="Qualities" Type="Self.Qualities" Multiplicity="1" />
+          <End Role="PackSliphead" Type="Self.PackSliphead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qualities">
+              <PropertyRef Name="QcCode" />
+              <PropertyRef Name="prodCode" />
+            </Principal>
+            <Dependent Role="PackSliphead">
+              <PropertyRef Name="QcCode" />
+              <PropertyRef Name="prodCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSlipReqdetl_Batches">
+          <End Role="Batches" Type="Self.Batches" Multiplicity="1" />
+          <End Role="PackSlipReqdetl" Type="Self.PackSlipReqdetl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batches">
+              <PropertyRef Name="finYear" />
+              <PropertyRef Name="loomNo" />
+              <PropertyRef Name="BatchNo" />
+            </Principal>
+            <Dependent Role="PackSlipReqdetl">
+              <PropertyRef Name="finyear" />
+              <PropertyRef Name="loomNo" />
+              <PropertyRef Name="BatchNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSlipReqdetl_PackSlipReqhead">
+          <End Role="PackSlipReqhead" Type="Self.PackSlipReqhead" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PackSlipReqdetl" Type="Self.PackSlipReqdetl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PackSlipReqhead">
+              <PropertyRef Name="req_id" />
+            </Principal>
+            <Dependent Role="PackSlipReqdetl">
+              <PropertyRef Name="req_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSlipReqhead_mst011">
+          <End Role="mst011" Type="Self.mst011" Multiplicity="0..1" />
+          <End Role="PackSlipReqhead" Type="Self.PackSlipReqhead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mst011">
+              <PropertyRef Name="acc_code" />
+            </Principal>
+            <Dependent Role="PackSlipReqhead">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSlipReqhead_products">
+          <End Role="products" Type="Self.products" Multiplicity="1" />
+          <End Role="PackSlipReqhead" Type="Self.PackSlipReqhead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="prodCode" />
+            </Principal>
+            <Dependent Role="PackSlipReqhead">
+              <PropertyRef Name="prodCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSlipReqhead_sales001_01">
+          <End Role="sales001_01" Type="Self.sales001_01" Multiplicity="0..1" />
+          <End Role="PackSlipReqhead" Type="Self.PackSlipReqhead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sales001_01">
+              <PropertyRef Name="detl_id" />
+            </Principal>
+            <Dependent Role="PackSlipReqhead">
+              <PropertyRef Name="so_detl" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSlipRequest_Qualities">
+          <End Role="Qualities" Type="Self.Qualities" Multiplicity="1" />
+          <End Role="PackSlipReqhead" Type="Self.PackSlipReqhead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qualities">
+              <PropertyRef Name="QcCode" />
+              <PropertyRef Name="prodCode" />
+            </Principal>
+            <Dependent Role="PackSlipReqhead">
+              <PropertyRef Name="QcCode" />
+              <PropertyRef Name="prodCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qualities_products">
+          <End Role="products" Type="Self.products" Multiplicity="1" />
+          <End Role="Qualities" Type="Self.Qualities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="prodCode" />
+            </Principal>
+            <Dependent Role="Qualities">
+              <PropertyRef Name="prodCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sales001_00_sales001">
+          <End Role="sales001" Type="Self.sales001" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sales001_00" Type="Self.sales001_00" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="sales001">
+              <PropertyRef Name="vch_id" />
+            </Principal>
+            <Dependent Role="sales001_00">
+              <PropertyRef Name="vch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sales001_01_Qualities">
+          <End Role="Qualities" Type="Self.Qualities" Multiplicity="1" />
+          <End Role="sales001_01" Type="Self.sales001_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qualities">
+              <PropertyRef Name="QcCode" />
+              <PropertyRef Name="prodCode" />
+            </Principal>
+            <Dependent Role="sales001_01">
+              <PropertyRef Name="qc_code" />
+              <PropertyRef Name="prod_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sales001_01_sales001">
+          <End Role="sales001" Type="Self.sales001" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sales001_01" Type="Self.sales001_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sales001">
+              <PropertyRef Name="vch_id" />
+            </Principal>
+            <Dependent Role="sales001_01">
+              <PropertyRef Name="vch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sales001_Broker">
+          <End Role="Broker" Type="Self.Broker" Multiplicity="0..1" />
+          <End Role="sales001" Type="Self.sales001" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Broker">
+              <PropertyRef Name="brokerCode" />
+            </Principal>
+            <Dependent Role="sales001">
+              <PropertyRef Name="broker_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sales001_customers">
+          <End Role="mst011" Type="Self.mst011" Multiplicity="1" />
+          <End Role="sales001" Type="Self.sales001" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mst011">
+              <PropertyRef Name="acc_code" />
+            </Principal>
+            <Dependent Role="sales001">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SetBeem_SetBeem">
+          <End Role="SetBeem" Type="Self.SetBeem" Multiplicity="1" />
+          <End Role="SetBeem1" Type="Self.SetBeem" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SetBeem">
+              <PropertyRef Name="setNo" />
+              <PropertyRef Name="beemNo" />
+            </Principal>
+            <Dependent Role="SetBeem1">
+              <PropertyRef Name="setNo" />
+              <PropertyRef Name="beemNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SetBeem_SetCreation">
+          <End Role="SetCreation" Type="Self.SetCreation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SetBeem" Type="Self.SetBeem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SetCreation">
+              <PropertyRef Name="setNo" />
+            </Principal>
+            <Dependent Role="SetBeem">
+              <PropertyRef Name="setNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stacks_mst014">
+          <End Role="mst014" Type="Self.mst014" Multiplicity="1" />
+          <End Role="Stacks" Type="Self.Stacks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mst014">
+              <PropertyRef Name="L_Id" />
+            </Principal>
+            <Dependent Role="Stacks">
+              <PropertyRef Name="gwnCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GarmentBatchModelStoreContainer">
+          <EntitySet Name="Batches" EntityType="Self.Batches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Batches_01" EntityType="Self.Batches_01" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Batches_02" EntityType="Self.Batches_02" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Broker" EntityType="Self.Broker" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Counts" EntityType="Self.Counts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CurrentStock" EntityType="Self.CurrentStock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="grades" EntityType="Self.grades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inspectors" EntityType="Self.Inspectors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="localuser" EntityType="Self.localuser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="localuser1" EntityType="Self.localuser1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="localuser2" EntityType="Self.localuser2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="localuser3" EntityType="Self.localuser3" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="localuser4" EntityType="Self.localuser4" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="machins" EntityType="Self.machins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mill" EntityType="Self.Mill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="modules" EntityType="Self.modules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="moduleuser" EntityType="Self.moduleuser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mst004" EntityType="Self.mst004" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mst005" EntityType="Self.mst005" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mst005_01" EntityType="Self.mst005_01" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mst006" EntityType="Self.mst006" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mst011" EntityType="Self.mst011" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mst011_01" EntityType="Self.mst011_01" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mst014" EntityType="Self.mst014" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="packSlip_002" EntityType="Self.packSlip_002" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PackSlipDetl" EntityType="Self.PackSlipDetl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PackSliphead" EntityType="Self.PackSliphead" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PackSlipReqdetl" EntityType="Self.PackSlipReqdetl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PackSlipReqhead" EntityType="Self.PackSlipReqhead" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Qualities" EntityType="Self.Qualities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sales001" EntityType="Self.sales001" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sales001_00" EntityType="Self.sales001_00" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sales001_01" EntityType="Self.sales001_01" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SetBeem" EntityType="Self.SetBeem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SetCreation" EntityType="Self.SetCreation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stacks" EntityType="Self.Stacks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Batches_01_Batches" Association="Self.FK_Batches_01_Batches">
+            <End Role="Batches" EntitySet="Batches" />
+            <End Role="Batches_01" EntitySet="Batches_01" />
+          </AssociationSet>
+          <AssociationSet Name="FK_batches_02_batches" Association="Self.FK_batches_02_batches">
+            <End Role="Batches" EntitySet="Batches" />
+            <End Role="Batches_02" EntitySet="Batches_02" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batches_grades" Association="Self.FK_Batches_grades">
+            <End Role="grades" EntitySet="grades" />
+            <End Role="Batches" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batches_Inspectors" Association="Self.FK_Batches_Inspectors">
+            <End Role="Inspectors" EntitySet="Inspectors" />
+            <End Role="Batches" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batches_Inspectors1" Association="Self.FK_Batches_Inspectors1">
+            <End Role="Inspectors" EntitySet="Inspectors" />
+            <End Role="Batches" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batches_machins" Association="Self.FK_Batches_machins">
+            <End Role="machins" EntitySet="machins" />
+            <End Role="Batches" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batches_mst014" Association="Self.FK_Batches_mst014">
+            <End Role="mst014" EntitySet="mst014" />
+            <End Role="Batches" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batches_products" Association="Self.FK_Batches_products">
+            <End Role="Qualities" EntitySet="Qualities" />
+            <End Role="Batches" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batches_sales001" Association="Self.FK_Batches_sales001">
+            <End Role="sales001" EntitySet="sales001" />
+            <End Role="Batches" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batches_SetBeem" Association="Self.FK_Batches_SetBeem">
+            <End Role="SetBeem" EntitySet="SetBeem" />
+            <End Role="Batches" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_localuser_localuser2" Association="Self.FK_localuser_localuser2">
+            <End Role="localuser2" EntitySet="localuser2" />
+            <End Role="localuser" EntitySet="localuser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_localuser2_localuser1" Association="Self.FK_localuser2_localuser1">
+            <End Role="localuser1" EntitySet="localuser1" />
+            <End Role="localuser2" EntitySet="localuser2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_localuser3_localuser2" Association="Self.FK_localuser3_localuser2">
+            <End Role="localuser2" EntitySet="localuser2" />
+            <End Role="localuser3" EntitySet="localuser3" />
+          </AssociationSet>
+          <AssociationSet Name="FK_localuser4_localuser1" Association="Self.FK_localuser4_localuser1">
+            <End Role="localuser1" EntitySet="localuser1" />
+            <End Role="localuser4" EntitySet="localuser4" />
+          </AssociationSet>
+          <AssociationSet Name="FK_moduleuser_localuser2" Association="Self.FK_moduleuser_localuser2">
+            <End Role="localuser2" EntitySet="localuser2" />
+            <End Role="moduleuser" EntitySet="moduleuser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_moduleuser_Modules" Association="Self.FK_moduleuser_Modules">
+            <End Role="modules" EntitySet="modules" />
+            <End Role="moduleuser" EntitySet="moduleuser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mst004_mst006" Association="Self.FK_mst004_mst006">
+            <End Role="mst006" EntitySet="mst006" />
+            <End Role="mst004" EntitySet="mst004" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mst005_01_mst004" Association="Self.FK_mst005_01_mst004">
+            <End Role="mst004" EntitySet="mst004" />
+            <End Role="mst005_01" EntitySet="mst005_01" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mst005_01_mst005" Association="Self.FK_mst005_01_mst005">
+            <End Role="mst005" EntitySet="mst005" />
+            <End Role="mst005_01" EntitySet="mst005_01" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mst011_01_mst006" Association="Self.FK_mst011_01_mst006">
+            <End Role="mst006" EntitySet="mst006" />
+            <End Role="mst011_01" EntitySet="mst011_01" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mst011_01_mst011" Association="Self.FK_mst011_01_mst011">
+            <End Role="mst011" EntitySet="mst011" />
+            <End Role="mst011_01" EntitySet="mst011_01" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mst014_mst006" Association="Self.FK_mst014_mst006">
+            <End Role="mst006" EntitySet="mst006" />
+            <End Role="mst014" EntitySet="mst014" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mst014_mst014" Association="Self.FK_mst014_mst014">
+            <End Role="mst014" EntitySet="mst014" />
+            <End Role="mst0141" EntitySet="mst014" />
+          </AssociationSet>
+          <AssociationSet Name="FK_packSlip_002_PackSliphead" Association="Self.FK_packSlip_002_PackSliphead">
+            <End Role="PackSliphead" EntitySet="PackSliphead" />
+            <End Role="packSlip_002" EntitySet="packSlip_002" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSlipDetl_Batches" Association="Self.FK_PackSlipDetl_Batches">
+            <End Role="Batches" EntitySet="Batches" />
+            <End Role="PackSlipDetl" EntitySet="PackSlipDetl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSlipDetl_PackSliphead" Association="Self.FK_PackSlipDetl_PackSliphead">
+            <End Role="PackSliphead" EntitySet="PackSliphead" />
+            <End Role="PackSlipDetl" EntitySet="PackSlipDetl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSliphead_mst011" Association="Self.FK_PackSliphead_mst011">
+            <End Role="mst011" EntitySet="mst011" />
+            <End Role="PackSliphead" EntitySet="PackSliphead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSliphead_PackSliphead" Association="Self.FK_PackSliphead_PackSliphead">
+            <End Role="PackSliphead" EntitySet="PackSliphead" />
+            <End Role="PackSliphead1" EntitySet="PackSliphead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSliphead_PackSlipReqhead" Association="Self.FK_PackSliphead_PackSlipReqhead">
+            <End Role="PackSlipReqhead" EntitySet="PackSlipReqhead" />
+            <End Role="PackSliphead" EntitySet="PackSliphead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSliphead_products" Association="Self.FK_PackSliphead_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="PackSliphead" EntitySet="PackSliphead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSliphead_Qualities" Association="Self.FK_PackSliphead_Qualities">
+            <End Role="Qualities" EntitySet="Qualities" />
+            <End Role="PackSliphead" EntitySet="PackSliphead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSlipReqdetl_Batches" Association="Self.FK_PackSlipReqdetl_Batches">
+            <End Role="Batches" EntitySet="Batches" />
+            <End Role="PackSlipReqdetl" EntitySet="PackSlipReqdetl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSlipReqdetl_PackSlipReqhead" Association="Self.FK_PackSlipReqdetl_PackSlipReqhead">
+            <End Role="PackSlipReqhead" EntitySet="PackSlipReqhead" />
+            <End Role="PackSlipReqdetl" EntitySet="PackSlipReqdetl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSlipReqhead_mst011" Association="Self.FK_PackSlipReqhead_mst011">
+            <End Role="mst011" EntitySet="mst011" />
+            <End Role="PackSlipReqhead" EntitySet="PackSlipReqhead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSlipReqhead_products" Association="Self.FK_PackSlipReqhead_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="PackSlipReqhead" EntitySet="PackSlipReqhead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSlipReqhead_sales001_01" Association="Self.FK_PackSlipReqhead_sales001_01">
+            <End Role="sales001_01" EntitySet="sales001_01" />
+            <End Role="PackSlipReqhead" EntitySet="PackSlipReqhead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSlipRequest_Qualities" Association="Self.FK_PackSlipRequest_Qualities">
+            <End Role="Qualities" EntitySet="Qualities" />
+            <End Role="PackSlipReqhead" EntitySet="PackSlipReqhead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qualities_products" Association="Self.FK_Qualities_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="Qualities" EntitySet="Qualities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sales001_00_sales001" Association="Self.FK_sales001_00_sales001">
+            <End Role="sales001" EntitySet="sales001" />
+            <End Role="sales001_00" EntitySet="sales001_00" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sales001_01_Qualities" Association="Self.FK_sales001_01_Qualities">
+            <End Role="Qualities" EntitySet="Qualities" />
+            <End Role="sales001_01" EntitySet="sales001_01" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sales001_01_sales001" Association="Self.FK_sales001_01_sales001">
+            <End Role="sales001" EntitySet="sales001" />
+            <End Role="sales001_01" EntitySet="sales001_01" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sales001_Broker" Association="Self.FK_sales001_Broker">
+            <End Role="Broker" EntitySet="Broker" />
+            <End Role="sales001" EntitySet="sales001" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sales001_customers" Association="Self.FK_sales001_customers">
+            <End Role="mst011" EntitySet="mst011" />
+            <End Role="sales001" EntitySet="sales001" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SetBeem_SetBeem" Association="Self.FK_SetBeem_SetBeem">
+            <End Role="SetBeem" EntitySet="SetBeem" />
+            <End Role="SetBeem1" EntitySet="SetBeem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SetBeem_SetCreation" Association="Self.FK_SetBeem_SetCreation">
+            <End Role="SetCreation" EntitySet="SetCreation" />
+            <End Role="SetBeem" EntitySet="SetBeem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stacks_mst014" Association="Self.FK_Stacks_mst014">
+            <End Role="mst014" EntitySet="mst014" />
+            <End Role="Stacks" EntitySet="Stacks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GarmentBatchModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="GarmentBatchEntities" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="Batches_01" EntityType="GarmentBatchModel.Batches_01" />
+          <EntitySet Name="Brokers" EntityType="GarmentBatchModel.Broker" />
+          <EntitySet Name="Counts" EntityType="GarmentBatchModel.Count" />
+          <EntitySet Name="CurrentStocks" EntityType="GarmentBatchModel.CurrentStock" />
+          <EntitySet Name="Inspectors" EntityType="GarmentBatchModel.Inspector" />
+          <EntitySet Name="localusers" EntityType="GarmentBatchModel.localuser" />
+          <EntitySet Name="localuser1" EntityType="GarmentBatchModel.localuser1" />
+          <EntitySet Name="localuser3" EntityType="GarmentBatchModel.localuser3" />
+          <EntitySet Name="localuser4" EntityType="GarmentBatchModel.localuser4" />
+          <EntitySet Name="machins" EntityType="GarmentBatchModel.machin" />
+          <EntitySet Name="Mills" EntityType="GarmentBatchModel.Mill" />
+          <EntitySet Name="modules" EntityType="GarmentBatchModel.module" />
+          <EntitySet Name="moduleusers" EntityType="GarmentBatchModel.moduleuser" />
+          <EntitySet Name="packSlip_002" EntityType="GarmentBatchModel.packSlip_002" />
+          <EntitySet Name="PackSlipheads" EntityType="GarmentBatchModel.PackSliphead" />
+          <EntitySet Name="Qualities" EntityType="GarmentBatchModel.Quality" />
+          <EntitySet Name="sales001_00" EntityType="GarmentBatchModel.sales001_00" />
+          <EntitySet Name="sales001_01" EntityType="GarmentBatchModel.sales001_01" />
+          <EntitySet Name="SetBeems" EntityType="GarmentBatchModel.SetBeem" />
+          <EntitySet Name="SetCreations" EntityType="GarmentBatchModel.SetCreation" />
+          <EntitySet Name="Stacks" EntityType="GarmentBatchModel.Stack" />
+          <AssociationSet Name="FK_localuser4_localuser1" Association="GarmentBatchModel.FK_localuser4_localuser1">
+            <End Role="localuser1" EntitySet="localuser1" />
+            <End Role="localuser4" EntitySet="localuser4" />
+          </AssociationSet>
+          <AssociationSet Name="FK_moduleuser_Modules" Association="GarmentBatchModel.FK_moduleuser_Modules">
+            <End Role="module" EntitySet="modules" />
+            <End Role="moduleuser" EntitySet="moduleusers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_packSlip_002_PackSliphead" Association="GarmentBatchModel.FK_packSlip_002_PackSliphead">
+            <End Role="PackSliphead" EntitySet="PackSlipheads" />
+            <End Role="packSlip_002" EntitySet="packSlip_002" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSliphead_Qualities" Association="GarmentBatchModel.FK_PackSliphead_Qualities">
+            <End Role="Quality" EntitySet="Qualities" />
+            <End Role="PackSliphead" EntitySet="PackSlipheads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sales001_01_Qualities" Association="GarmentBatchModel.FK_sales001_01_Qualities">
+            <End Role="Quality" EntitySet="Qualities" />
+            <End Role="sales001_01" EntitySet="sales001_01" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SetBeem_SetCreation" Association="GarmentBatchModel.FK_SetBeem_SetCreation">
+            <End Role="SetCreation" EntitySet="SetCreations" />
+            <End Role="SetBeem" EntitySet="SetBeems" />
+          </AssociationSet>
+          <EntitySet Name="PackSlipReqdetls" EntityType="GarmentBatchModel.PackSlipReqdetl" />
+          <EntitySet Name="mst011" EntityType="GarmentBatchModel.mst011" />
+          <AssociationSet Name="FK_PackSliphead_mst011" Association="GarmentBatchModel.FK_PackSliphead_mst011">
+            <End Role="mst011" EntitySet="mst011" />
+            <End Role="PackSliphead" EntitySet="PackSlipheads" />
+          </AssociationSet>
+          <EntitySet Name="grades" EntityType="GarmentBatchModel.grade" />
+          <EntitySet Name="mst004" EntityType="GarmentBatchModel.mst004" />
+          <EntitySet Name="mst011_01" EntityType="GarmentBatchModel.mst011_01" />
+          <AssociationSet Name="FK_mst011_01_mst011" Association="GarmentBatchModel.FK_mst011_01_mst011">
+            <End Role="mst011" EntitySet="mst011" />
+            <End Role="mst011_01" EntitySet="mst011_01" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSliphead_PackSliphead" Association="GarmentBatchModel.FK_PackSliphead_PackSliphead">
+            <End Role="PackSliphead" EntitySet="PackSlipheads" />
+            <End Role="PackSliphead1" EntitySet="PackSlipheads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SetBeem_SetBeem" Association="GarmentBatchModel.FK_SetBeem_SetBeem">
+            <End Role="SetBeem" EntitySet="SetBeems" />
+            <End Role="SetBeem1" EntitySet="SetBeems" />
+          </AssociationSet>
+          <EntitySet Name="localuser2" EntityType="GarmentBatchModel.localuser2" />
+          <AssociationSet Name="FK_localuser_localuser2" Association="GarmentBatchModel.FK_localuser_localuser2">
+            <End Role="localuser2" EntitySet="localuser2" />
+            <End Role="localuser" EntitySet="localusers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_localuser2_localuser1" Association="GarmentBatchModel.FK_localuser2_localuser1">
+            <End Role="localuser1" EntitySet="localuser1" />
+            <End Role="localuser2" EntitySet="localuser2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_localuser3_localuser2" Association="GarmentBatchModel.FK_localuser3_localuser2">
+            <End Role="localuser2" EntitySet="localuser2" />
+            <End Role="localuser3" EntitySet="localuser3" />
+          </AssociationSet>
+          <AssociationSet Name="FK_moduleuser_localuser2" Association="GarmentBatchModel.FK_moduleuser_localuser2">
+            <End Role="localuser2" EntitySet="localuser2" />
+            <End Role="moduleuser" EntitySet="moduleusers" />
+          </AssociationSet>
+          <EntitySet Name="Batches_02" EntityType="GarmentBatchModel.Batches_02" />
+          <EntitySet Name="PackSlipDetls" EntityType="GarmentBatchModel.PackSlipDetl" />
+          <AssociationSet Name="FK_PackSlipDetl_PackSliphead" Association="GarmentBatchModel.FK_PackSlipDetl_PackSliphead">
+            <End Role="PackSliphead" EntitySet="PackSlipheads" />
+            <End Role="PackSlipDetl" EntitySet="PackSlipDetls" />
+          </AssociationSet>
+          <EntitySet Name="mst005" EntityType="GarmentBatchModel.mst005" />
+          <EntitySet Name="mst005_01" EntityType="GarmentBatchModel.mst005_01" />
+          <AssociationSet Name="FK_mst005_01_mst004" Association="GarmentBatchModel.FK_mst005_01_mst004">
+            <End Role="mst004" EntitySet="mst004" />
+            <End Role="mst005_01" EntitySet="mst005_01" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mst005_01_mst005" Association="GarmentBatchModel.FK_mst005_01_mst005">
+            <End Role="mst005" EntitySet="mst005" />
+            <End Role="mst005_01" EntitySet="mst005_01" />
+          </AssociationSet>
+          <EntitySet Name="Batches" EntityType="GarmentBatchModel.Batch" />
+          <EntitySet Name="products" EntityType="GarmentBatchModel.product" />
+          <AssociationSet Name="FK_Batches_01_Batches" Association="GarmentBatchModel.FK_Batches_01_Batches">
+            <End Role="Batch" EntitySet="Batches" />
+            <End Role="Batches_01" EntitySet="Batches_01" />
+          </AssociationSet>
+          <AssociationSet Name="FK_batches_02_batches" Association="GarmentBatchModel.FK_batches_02_batches">
+            <End Role="Batch" EntitySet="Batches" />
+            <End Role="Batches_02" EntitySet="Batches_02" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batches_grades" Association="GarmentBatchModel.FK_Batches_grades">
+            <End Role="grade" EntitySet="grades" />
+            <End Role="Batch" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batches_Inspectors" Association="GarmentBatchModel.FK_Batches_Inspectors">
+            <End Role="Inspector" EntitySet="Inspectors" />
+            <End Role="Batch" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batches_Inspectors1" Association="GarmentBatchModel.FK_Batches_Inspectors1">
+            <End Role="Inspector" EntitySet="Inspectors" />
+            <End Role="Batch" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batches_machins" Association="GarmentBatchModel.FK_Batches_machins">
+            <End Role="machin" EntitySet="machins" />
+            <End Role="Batch" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batches_products" Association="GarmentBatchModel.FK_Batches_products">
+            <End Role="Quality" EntitySet="Qualities" />
+            <End Role="Batch" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batches_SetBeem" Association="GarmentBatchModel.FK_Batches_SetBeem">
+            <End Role="SetBeem" EntitySet="SetBeems" />
+            <End Role="Batch" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSlipDetl_Batches" Association="GarmentBatchModel.FK_PackSlipDetl_Batches">
+            <End Role="Batch" EntitySet="Batches" />
+            <End Role="PackSlipDetl" EntitySet="PackSlipDetls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSlipReqdetl_Batches" Association="GarmentBatchModel.FK_PackSlipReqdetl_Batches">
+            <End Role="Batch" EntitySet="Batches" />
+            <End Role="PackSlipReqdetl" EntitySet="PackSlipReqdetls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSliphead_products" Association="GarmentBatchModel.FK_PackSliphead_products">
+            <End Role="product" EntitySet="products" />
+            <End Role="PackSliphead" EntitySet="PackSlipheads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qualities_products" Association="GarmentBatchModel.FK_Qualities_products">
+            <End Role="product" EntitySet="products" />
+            <End Role="Quality" EntitySet="Qualities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batches_Batches" Association="GarmentBatchModel.FK_Batches_Batches">
+            <End Role="Batch" EntitySet="Batches" />
+            <End Role="Batch1" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_grades_grades" Association="GarmentBatchModel.FK_grades_grades">
+            <End Role="grade" EntitySet="grades" />
+            <End Role="grade1" EntitySet="grades" />
+          </AssociationSet>
+          <EntitySet Name="PackSlipReqheads" EntityType="GarmentBatchModel.PackSlipReqhead" />
+          <AssociationSet Name="FK_PackSlipReqhead_mst011" Association="GarmentBatchModel.FK_PackSlipReqhead_mst011">
+            <End Role="mst011" EntitySet="mst011" />
+            <End Role="PackSlipReqhead" EntitySet="PackSlipReqheads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSliphead_PackSlipReqhead" Association="GarmentBatchModel.FK_PackSliphead_PackSlipReqhead">
+            <End Role="PackSlipReqhead" EntitySet="PackSlipReqheads" />
+            <End Role="PackSliphead" EntitySet="PackSlipheads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSlipReqdetl_PackSlipReqhead" Association="GarmentBatchModel.FK_PackSlipReqdetl_PackSlipReqhead">
+            <End Role="PackSlipReqhead" EntitySet="PackSlipReqheads" />
+            <End Role="PackSlipReqdetl" EntitySet="PackSlipReqdetls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSlipReqhead_products" Association="GarmentBatchModel.FK_PackSlipReqhead_products">
+            <End Role="product" EntitySet="products" />
+            <End Role="PackSlipReqhead" EntitySet="PackSlipReqheads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSlipReqhead_sales001_01" Association="GarmentBatchModel.FK_PackSlipReqhead_sales001_01">
+            <End Role="sales001_01" EntitySet="sales001_01" />
+            <End Role="PackSlipReqhead" EntitySet="PackSlipReqheads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackSlipRequest_Qualities" Association="GarmentBatchModel.FK_PackSlipRequest_Qualities">
+            <End Role="Quality" EntitySet="Qualities" />
+            <End Role="PackSlipReqhead" EntitySet="PackSlipReqheads" />
+          </AssociationSet>
+          <EntitySet Name="mst014" EntityType="GarmentBatchModel.mst014" />
+          <AssociationSet Name="FK_Batches_mst014" Association="GarmentBatchModel.FK_Batches_mst014">
+            <End Role="mst014" EntitySet="mst014" />
+            <End Role="Batch" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mst014_mst014" Association="GarmentBatchModel.FK_mst014_mst014">
+            <End Role="mst014" EntitySet="mst014" />
+            <End Role="mst0141" EntitySet="mst014" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stacks_mst014" Association="GarmentBatchModel.FK_Stacks_mst014">
+            <End Role="mst014" EntitySet="mst014" />
+            <End Role="Stack" EntitySet="Stacks" />
+          </AssociationSet>
+          <EntitySet Name="sales001" EntityType="GarmentBatchModel.sales001" />
+          <AssociationSet Name="FK_Batches_sales001" Association="GarmentBatchModel.FK_Batches_sales001">
+            <End Role="sales001" EntitySet="sales001" />
+            <End Role="Batch" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sales001_Broker" Association="GarmentBatchModel.FK_sales001_Broker">
+            <End Role="Broker" EntitySet="Brokers" />
+            <End Role="sales001" EntitySet="sales001" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sales001_customers" Association="GarmentBatchModel.FK_sales001_customers">
+            <End Role="mst011" EntitySet="mst011" />
+            <End Role="sales001" EntitySet="sales001" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sales001_00_sales001" Association="GarmentBatchModel.FK_sales001_00_sales001">
+            <End Role="sales001" EntitySet="sales001" />
+            <End Role="sales001_00" EntitySet="sales001_00" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sales001_01_sales001" Association="GarmentBatchModel.FK_sales001_01_sales001">
+            <End Role="sales001" EntitySet="sales001" />
+            <End Role="sales001_01" EntitySet="sales001_01" />
+          </AssociationSet>
+          <EntitySet Name="mst006" EntityType="GarmentBatchModel.mst006" />
+          <AssociationSet Name="FK_mst004_mst006" Association="GarmentBatchModel.FK_mst004_mst006">
+            <End Role="mst006" EntitySet="mst006" />
+            <End Role="mst004" EntitySet="mst004" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mst011_01_mst006" Association="GarmentBatchModel.FK_mst011_01_mst006">
+            <End Role="mst006" EntitySet="mst006" />
+            <End Role="mst011_01" EntitySet="mst011_01" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mst014_mst006" Association="GarmentBatchModel.FK_mst014_mst006">
+            <End Role="mst006" EntitySet="mst006" />
+            <End Role="mst014" EntitySet="mst014" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Batches_01">
+          <Key>
+            <PropertyRef Name="detl_id" />
+          </Key>
+          <Property Name="detl_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="finYear" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="loomNo" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="BatchNo" Type="Int32" Nullable="false" />
+          <Property Name="attachment" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="attachdescr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Batch" Relationship="GarmentBatchModel.FK_Batches_01_Batches" FromRole="Batches_01" ToRole="Batch" />
+        </EntityType>
+        <EntityType Name="Broker">
+          <Key>
+            <PropertyRef Name="brokerCode" />
+          </Key>
+          <Property Name="brokerCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="brokerName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="brokerAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="contactNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="GSTN" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="sales001" Relationship="GarmentBatchModel.FK_sales001_Broker" FromRole="Broker" ToRole="sales001" />
+        </EntityType>
+        <EntityType Name="Count">
+          <Key>
+            <PropertyRef Name="CountId" />
+          </Key>
+          <Property Name="CountId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="countValue" Type="Decimal" Nullable="false" Precision="7" Scale="3" />
+        </EntityType>
+        <EntityType Name="CurrentStock">
+          <Key>
+            <PropertyRef Name="finyear" />
+            <PropertyRef Name="loomNo" />
+            <PropertyRef Name="BatchNo" />
+          </Key>
+          <Property Name="finyear" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="loomNo" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="BatchNo" Type="Int32" Nullable="false" />
+          <Property Name="Mtrs" Type="Int32" Nullable="false" />
+          <Property Name="scannedDate" Type="DateTime" Precision="3" />
+          <Property Name="createdbyid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Inspector">
+          <Key>
+            <PropertyRef Name="inspectorId" />
+          </Key>
+          <Property Name="inspectorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="inspectorName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Batches" Relationship="GarmentBatchModel.FK_Batches_Inspectors" FromRole="Inspector" ToRole="Batch" />
+          <NavigationProperty Name="Batches1" Relationship="GarmentBatchModel.FK_Batches_Inspectors1" FromRole="Inspector" ToRole="Batch" />
+          </EntityType>
+        <EntityType Name="localuser">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="localuser2" Relationship="GarmentBatchModel.FK_localuser_localuser2" FromRole="localuser" ToRole="localuser2" />
+        </EntityType>
+        <EntityType Name="localuser1">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userlevel_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="comments" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="localuser4" Relationship="GarmentBatchModel.FK_localuser4_localuser1" FromRole="localuser1" ToRole="localuser4" />
+          <NavigationProperty Name="localuser2" Relationship="GarmentBatchModel.FK_localuser2_localuser1" FromRole="localuser1" ToRole="localuser2" />
+        </EntityType>
+        <EntityType Name="localuser3">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="A" Type="Boolean" Nullable="false" />
+          <Property Name="E" Type="Boolean" Nullable="false" />
+          <Property Name="D" Type="Boolean" Nullable="false" />
+          <Property Name="L" Type="Boolean" Nullable="false" />
+          <Property Name="P" Type="Boolean" Nullable="false" />
+          <Property Name="SysAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="O" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="localuser2" Relationship="GarmentBatchModel.FK_localuser3_localuser2" FromRole="localuser3" ToRole="localuser2" />
+        </EntityType>
+        <EntityType Name="localuser4">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="A" Type="Boolean" Nullable="false" />
+          <Property Name="E" Type="Boolean" Nullable="false" />
+          <Property Name="D" Type="Boolean" Nullable="false" />
+          <Property Name="L" Type="Boolean" Nullable="false" />
+          <Property Name="P" Type="Boolean" Nullable="false" />
+          <Property Name="B" Type="Boolean" Nullable="false" />
+          <Property Name="R" Type="Boolean" Nullable="false" />
+          <Property Name="O" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="localuser1" Relationship="GarmentBatchModel.FK_localuser4_localuser1" FromRole="localuser4" ToRole="localuser1" />
+        </EntityType>
+        <EntityType Name="machin">
+          <Key>
+            <PropertyRef Name="machinId" />
+          </Key>
+          <Property Name="machinId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MachinName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Batches" Relationship="GarmentBatchModel.FK_Batches_machins" FromRole="machin" ToRole="Batch" />
+        </EntityType>
+        <EntityType Name="Mill">
+          <Key>
+            <PropertyRef Name="millCode" />
+          </Key>
+          <Property Name="millCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="millName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GSTIN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="module">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="modulename" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="moduleusers" Relationship="GarmentBatchModel.FK_moduleuser_Modules" FromRole="module" ToRole="moduleuser" />
+        </EntityType>
+        <EntityType Name="moduleuser">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <Property Name="moduleid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="module" Relationship="GarmentBatchModel.FK_moduleuser_Modules" FromRole="moduleuser" ToRole="module" />
+          <NavigationProperty Name="localuser2" Relationship="GarmentBatchModel.FK_moduleuser_localuser2" FromRole="moduleuser" ToRole="localuser2" />
+        </EntityType>
+        <EntityType Name="packSlip_002">
+          <Key>
+            <PropertyRef Name="SlipId" />
+          </Key>
+          <Property Name="SlipId" Type="Int32" Nullable="false" />
+          <Property Name="vehical_img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PackSliphead" Relationship="GarmentBatchModel.FK_packSlip_002_PackSliphead" FromRole="packSlip_002" ToRole="PackSliphead" />
+          <Property Name="terms" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PackSliphead">
+          <Key>
+            <PropertyRef Name="SlipId" />
+          </Key>
+          <Property Name="SlipId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="finyear" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="SlipNo" Type="Int32" Nullable="false" />
+          <Property Name="custId" Type="Int32" Nullable="false" />
+          <Property Name="SlipDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="prodCode" Type="Int32" Nullable="false" />
+          <Property Name="QcCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Nar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="vehicleNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="totalMtrs" Type="Int32" />
+          <Property Name="totalWeight" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="req_id" Type="Int32" />
+          <Property Name="CreatedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="packSlip_002" Relationship="GarmentBatchModel.FK_packSlip_002_PackSliphead" FromRole="PackSliphead" ToRole="packSlip_002" />
+          <NavigationProperty Name="Quality" Relationship="GarmentBatchModel.FK_PackSliphead_Qualities" FromRole="PackSliphead" ToRole="Quality" />
+          <NavigationProperty Name="mst011" Relationship="GarmentBatchModel.FK_PackSliphead_mst011" FromRole="PackSliphead" ToRole="mst011" />
+          <Property Name="dctype" Type="Int32" Nullable="false" />
+          <Property Name="style_id" Type="Int64" />
+          <NavigationProperty Name="PackSliphead1" Relationship="GarmentBatchModel.FK_PackSliphead_PackSliphead" FromRole="PackSliphead" ToRole="PackSliphead1" />
+          <NavigationProperty Name="PackSliphead2" Relationship="GarmentBatchModel.FK_PackSliphead_PackSliphead" FromRole="PackSliphead1" ToRole="PackSliphead" />
+          <NavigationProperty Name="PackSlipDetls" Relationship="GarmentBatchModel.FK_PackSlipDetl_PackSliphead" FromRole="PackSliphead" ToRole="PackSlipDetl" />
+          <NavigationProperty Name="product" Relationship="GarmentBatchModel.FK_PackSliphead_products" FromRole="PackSliphead" ToRole="product" />
+          <Property Name="invoiceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PackSlipReqhead" Relationship="GarmentBatchModel.FK_PackSliphead_PackSlipReqhead" FromRole="PackSliphead" ToRole="PackSlipReqhead" />
+        </EntityType>
+        <EntityType Name="Quality">
+          <Key>
+            <PropertyRef Name="QcCode" />
+            <PropertyRef Name="prodCode" />
+          </Key>
+          <Property Name="QcCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="prodCode" Type="Int32" Nullable="false" />
+          <Property Name="QcDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Qcalias" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PackSlipheads" Relationship="GarmentBatchModel.FK_PackSliphead_Qualities" FromRole="Quality" ToRole="PackSliphead" />
+          <NavigationProperty Name="sales001_01" Relationship="GarmentBatchModel.FK_sales001_01_Qualities" FromRole="Quality" ToRole="sales001_01" />
+          <Property Name="std_width" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Batches" Relationship="GarmentBatchModel.FK_Batches_products" FromRole="Quality" ToRole="Batch" />
+          <NavigationProperty Name="product" Relationship="GarmentBatchModel.FK_Qualities_products" FromRole="Quality" ToRole="product" />
+          <NavigationProperty Name="PackSlipReqheads" Relationship="GarmentBatchModel.FK_PackSlipRequest_Qualities" FromRole="Quality" ToRole="PackSlipReqhead" />
+        </EntityType>
+        <EntityType Name="sales001_00">
+          <Key>
+            <PropertyRef Name="vch_id" />
+          </Key>
+          <Property Name="vch_id" Type="Int64" Nullable="false" />
+          <Property Name="CreatedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDt" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="sales001" Relationship="GarmentBatchModel.FK_sales001_00_sales001" FromRole="sales001_00" ToRole="sales001" />
+        </EntityType>
+        <EntityType Name="sales001_01">
+          <Key>
+            <PropertyRef Name="detl_id" />
+          </Key>
+          <Property Name="detl_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vch_id" Type="Int64" Nullable="false" />
+          <Property Name="qc_code" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="prod_code" Type="Int32" Nullable="false" />
+          <Property Name="roll" Type="Int32" Nullable="false" />
+          <Property Name="mtrs" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="naration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="rate" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="Quality" Relationship="GarmentBatchModel.FK_sales001_01_Qualities" FromRole="sales001_01" ToRole="Quality" />
+          <Property Name="grade_id" Type="Byte" />
+          <NavigationProperty Name="PackSlipReqheads" Relationship="GarmentBatchModel.FK_PackSlipReqhead_sales001_01" FromRole="sales001_01" ToRole="PackSlipReqhead" />
+          <NavigationProperty Name="sales001" Relationship="GarmentBatchModel.FK_sales001_01_sales001" FromRole="sales001_01" ToRole="sales001" />
+        </EntityType>
+        <EntityType Name="SetBeem">
+          <Key>
+            <PropertyRef Name="setNo" />
+            <PropertyRef Name="beemNo" />
+          </Key>
+          <Property Name="setNo" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="beemNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="deyingLength" Type="Decimal" Nullable="false" Precision="12" Scale="3" />
+          <NavigationProperty Name="SetCreation" Relationship="GarmentBatchModel.FK_SetBeem_SetCreation" FromRole="SetBeem" ToRole="SetCreation" />
+          <Property Name="opvchid" Type="Int64" />
+          <Property Name="invchid" Type="Int64" />
+          <Property Name="finyear" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="sb_created_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="rate" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="detl_id" Type="Int64" />
+          <NavigationProperty Name="SetBeem1" Relationship="GarmentBatchModel.FK_SetBeem_SetBeem" FromRole="SetBeem" ToRole="SetBeem1" />
+          <NavigationProperty Name="SetBeem2" Relationship="GarmentBatchModel.FK_SetBeem_SetBeem" FromRole="SetBeem1" ToRole="SetBeem" />
+          <NavigationProperty Name="Batches" Relationship="GarmentBatchModel.FK_Batches_SetBeem" FromRole="SetBeem" ToRole="Batch" />
+        </EntityType>
+        <EntityType Name="SetCreation">
+          <Key>
+            <PropertyRef Name="setNo" />
+          </Key>
+          <Property Name="setNo" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="warpCount" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="rs" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="CreatedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SetBeems" Relationship="GarmentBatchModel.FK_SetBeem_SetCreation" FromRole="SetCreation" ToRole="SetBeem" />
+        </EntityType>
+        <EntityType Name="Stack">
+          <Key>
+            <PropertyRef Name="gwnCode" />
+            <PropertyRef Name="stacksId" />
+          </Key>
+          <Property Name="gwnCode" Type="Int32" Nullable="false" />
+          <Property Name="stacksId" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="mst014" Relationship="GarmentBatchModel.FK_Stacks_mst014" FromRole="Stack" ToRole="mst014" />
+        </EntityType>
+        <Association Name="FK_localuser4_localuser1">
+          <End Type="GarmentBatchModel.localuser1" Role="localuser1" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GarmentBatchModel.localuser4" Role="localuser4" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="localuser1">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="localuser4">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_moduleuser_Modules">
+          <End Type="GarmentBatchModel.module" Role="module" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GarmentBatchModel.moduleuser" Role="moduleuser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="module">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="moduleuser">
+              <PropertyRef Name="moduleid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_packSlip_002_PackSliphead">
+          <End Type="GarmentBatchModel.PackSliphead" Role="PackSliphead" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GarmentBatchModel.packSlip_002" Role="packSlip_002" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PackSliphead">
+              <PropertyRef Name="SlipId" />
+            </Principal>
+            <Dependent Role="packSlip_002">
+              <PropertyRef Name="SlipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSliphead_Qualities">
+          <End Type="GarmentBatchModel.Quality" Role="Quality" Multiplicity="1" />
+          <End Type="GarmentBatchModel.PackSliphead" Role="PackSliphead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quality">
+              <PropertyRef Name="QcCode" />
+              <PropertyRef Name="prodCode" />
+            </Principal>
+            <Dependent Role="PackSliphead">
+              <PropertyRef Name="QcCode" />
+              <PropertyRef Name="prodCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sales001_01_Qualities">
+          <End Type="GarmentBatchModel.Quality" Role="Quality" Multiplicity="1" />
+          <End Type="GarmentBatchModel.sales001_01" Role="sales001_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quality">
+              <PropertyRef Name="QcCode" />
+              <PropertyRef Name="prodCode" />
+            </Principal>
+            <Dependent Role="sales001_01">
+              <PropertyRef Name="qc_code" />
+              <PropertyRef Name="prod_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SetBeem_SetCreation">
+          <End Type="GarmentBatchModel.SetCreation" Role="SetCreation" Multiplicity="1" />
+          <End Type="GarmentBatchModel.SetBeem" Role="SetBeem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SetCreation">
+              <PropertyRef Name="setNo" />
+            </Principal>
+            <Dependent Role="SetBeem">
+              <PropertyRef Name="setNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PackSlipReqdetl">
+          <Key>
+            <PropertyRef Name="detl_id" />
+          </Key>
+          <Property Name="detl_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="req_id" Type="Int32" Nullable="false" />
+          <Property Name="finyear" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="loomNo" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="BatchNo" Type="Int32" Nullable="false" />
+          <Property Name="mtr" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Batch" Relationship="GarmentBatchModel.FK_PackSlipReqdetl_Batches" FromRole="PackSlipReqdetl" ToRole="Batch" />
+          <NavigationProperty Name="PackSlipReqhead" Relationship="GarmentBatchModel.FK_PackSlipReqdetl_PackSlipReqhead" FromRole="PackSlipReqdetl" ToRole="PackSlipReqhead" />
+        </EntityType>
+        <EntityType Name="mst011">
+          <Key>
+            <PropertyRef Name="acc_code" />
+          </Key>
+          <Property Name="acc_code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sg_code" Type="Int32" Nullable="false" />
+          <Property Name="Acc_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="acc_alias" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDt" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDt" Type="DateTime" Precision="3" />
+          <Property Name="AllowAllFirm" Type="Boolean" />
+          <NavigationProperty Name="PackSlipheads" Relationship="GarmentBatchModel.FK_PackSliphead_mst011" FromRole="mst011" ToRole="PackSliphead" />
+          <NavigationProperty Name="mst011_01" Relationship="GarmentBatchModel.FK_mst011_01_mst011" FromRole="mst011" ToRole="mst011_01" />
+          <NavigationProperty Name="PackSlipReqheads" Relationship="GarmentBatchModel.FK_PackSlipReqhead_mst011" FromRole="mst011" ToRole="PackSlipReqhead" />
+          <NavigationProperty Name="sales001" Relationship="GarmentBatchModel.FK_sales001_customers" FromRole="mst011" ToRole="sales001" />
+        </EntityType>
+        <Association Name="FK_PackSliphead_mst011">
+          <End Type="GarmentBatchModel.mst011" Role="mst011" Multiplicity="1" />
+          <End Type="GarmentBatchModel.PackSliphead" Role="PackSliphead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mst011">
+              <PropertyRef Name="acc_code" />
+            </Principal>
+            <Dependent Role="PackSliphead">
+              <PropertyRef Name="custId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="grade">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Grade1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Batches" Relationship="GarmentBatchModel.FK_Batches_grades" FromRole="grade" ToRole="Batch" />
+          <NavigationProperty Name="grades1" Relationship="GarmentBatchModel.FK_grades_grades" FromRole="grade" ToRole="grade1" />
+          <NavigationProperty Name="grade2" Relationship="GarmentBatchModel.FK_grades_grades" FromRole="grade1" ToRole="grade" />
+        </EntityType>
+        <EntityType Name="mst004">
+          <Key>
+            <PropertyRef Name="firm_code" />
+          </Key>
+          <Property Name="firm_code" Type="Int32" Nullable="false" />
+          <Property Name="firm_name" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="firm_alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="firm_address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="firm_fno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="web_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="firm_cityId" Type="Int32" />
+          <Property Name="Jurisdiction" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="firm_cin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="firm_pan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <Property Name="firm_bank_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="firm_bank_accno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="firm_bank_ifsc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="natofbus" Type="Int32" />
+          <Property Name="CreatedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDt" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDt" Type="DateTime" Precision="3" />
+          <Property Name="is_membership" Type="Boolean" Nullable="false" />
+          <Property Name="firm_swift_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="firm_Bankbranch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="eic_no" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="firm_bank_holder" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="mst005_01" Relationship="GarmentBatchModel.FK_mst005_01_mst004" FromRole="mst004" ToRole="mst005_01" />
+          <NavigationProperty Name="mst006" Relationship="GarmentBatchModel.FK_mst004_mst006" FromRole="mst004" ToRole="mst006" />
+        </EntityType>
+        <EntityType Name="mst011_01">
+          <Key>
+            <PropertyRef Name="acc_code" />
+          </Key>
+          <Property Name="acc_code" Type="Int32" Nullable="false" />
+          <Property Name="acc_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="city_code" Type="Int32" />
+          <Property Name="contact_person" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contact_designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contact_mobile_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="off_tel_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="year_of_establishment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="website" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="mst011" Relationship="GarmentBatchModel.FK_mst011_01_mst011" FromRole="mst011_01" ToRole="mst011" />
+          <Property Name="pan_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cin_no" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="mst006" Relationship="GarmentBatchModel.FK_mst011_01_mst006" FromRole="mst011_01" ToRole="mst006" />
+        </EntityType>
+        <Association Name="FK_mst011_01_mst011">
+          <End Type="GarmentBatchModel.mst011" Role="mst011" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GarmentBatchModel.mst011_01" Role="mst011_01" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="mst011">
+              <PropertyRef Name="acc_code" />
+            </Principal>
+            <Dependent Role="mst011_01">
+              <PropertyRef Name="acc_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSliphead_PackSliphead">
+          <End Type="GarmentBatchModel.PackSliphead" Role="PackSliphead" Multiplicity="1" />
+          <End Type="GarmentBatchModel.PackSliphead" Role="PackSliphead1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PackSliphead">
+              <PropertyRef Name="SlipId" />
+            </Principal>
+            <Dependent Role="PackSliphead1">
+              <PropertyRef Name="SlipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SetBeem_SetBeem">
+          <End Type="GarmentBatchModel.SetBeem" Role="SetBeem" Multiplicity="1" />
+          <End Type="GarmentBatchModel.SetBeem" Role="SetBeem1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SetBeem">
+              <PropertyRef Name="setNo" />
+              <PropertyRef Name="beemNo" />
+            </Principal>
+            <Dependent Role="SetBeem1">
+              <PropertyRef Name="setNo" />
+              <PropertyRef Name="beemNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="localuser2">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UserLongName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserLevelID" Type="Int32" Nullable="false" />
+          <Property Name="mobileno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email_id" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="localuser" Relationship="GarmentBatchModel.FK_localuser_localuser2" FromRole="localuser2" ToRole="localuser" />
+          <NavigationProperty Name="localuser1" Relationship="GarmentBatchModel.FK_localuser2_localuser1" FromRole="localuser2" ToRole="localuser1" />
+          <NavigationProperty Name="localuser3" Relationship="GarmentBatchModel.FK_localuser3_localuser2" FromRole="localuser2" ToRole="localuser3" />
+          <NavigationProperty Name="moduleusers" Relationship="GarmentBatchModel.FK_moduleuser_localuser2" FromRole="localuser2" ToRole="moduleuser" />
+        </EntityType>
+        <Association Name="FK_localuser_localuser2">
+          <End Type="GarmentBatchModel.localuser2" Role="localuser2" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GarmentBatchModel.localuser" Role="localuser" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="localuser2">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="localuser">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_localuser2_localuser1">
+          <End Type="GarmentBatchModel.localuser1" Role="localuser1" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GarmentBatchModel.localuser2" Role="localuser2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="localuser1">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="localuser2">
+              <PropertyRef Name="UserLevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_localuser3_localuser2">
+          <End Type="GarmentBatchModel.localuser2" Role="localuser2" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GarmentBatchModel.localuser3" Role="localuser3" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="localuser2">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="localuser3">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_moduleuser_localuser2">
+          <End Type="GarmentBatchModel.localuser2" Role="localuser2" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GarmentBatchModel.moduleuser" Role="moduleuser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="localuser2">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="moduleuser">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Batches_02">
+          <Key>
+            <PropertyRef Name="pickid" />
+          </Key>
+          <Property Name="pickid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="finyear" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="loomNo" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="batchNo" Type="Int32" Nullable="false" />
+          <Property Name="pick" Type="Decimal" Nullable="false" Precision="7" Scale="3" />
+          <Property Name="weft" Type="Decimal" Nullable="false" Precision="7" Scale="3" />
+          <NavigationProperty Name="Batch" Relationship="GarmentBatchModel.FK_batches_02_batches" FromRole="Batches_02" ToRole="Batch" />
+        </EntityType>
+        <EntityType Name="PackSlipDetl">
+          <Key>
+            <PropertyRef Name="slipdetlId" />
+          </Key>
+          <Property Name="slipdetlId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SlipId" Type="Int32" Nullable="false" />
+          <Property Name="finyear" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="loomNo" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="BatchNo" Type="Int32" Nullable="false" />
+          <Property Name="mtr" Type="Int32" Nullable="false" />
+          <Property Name="weight" Type="Decimal" Nullable="false" Precision="12" Scale="3" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="scanned" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="PackSliphead" Relationship="GarmentBatchModel.FK_PackSlipDetl_PackSliphead" FromRole="PackSlipDetl" ToRole="PackSliphead" />
+          <NavigationProperty Name="Batch" Relationship="GarmentBatchModel.FK_PackSlipDetl_Batches" FromRole="PackSlipDetl" ToRole="Batch" />
+        </EntityType>
+        <Association Name="FK_PackSlipDetl_PackSliphead">
+          <End Type="GarmentBatchModel.PackSliphead" Role="PackSliphead" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GarmentBatchModel.PackSlipDetl" Role="PackSlipDetl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PackSliphead">
+              <PropertyRef Name="SlipId" />
+            </Principal>
+            <Dependent Role="PackSlipDetl">
+              <PropertyRef Name="SlipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="mst005">
+          <Key>
+            <PropertyRef Name="div_id" />
+          </Key>
+          <Property Name="finid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="div_id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="from_div_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fdt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tdt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="prefix" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="CreatedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDt" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="mst005_01" Relationship="GarmentBatchModel.FK_mst005_01_mst005" FromRole="mst005" ToRole="mst005_01" />
+        </EntityType>
+        <EntityType Name="mst005_01">
+          <Key>
+            <PropertyRef Name="firm_id" />
+            <PropertyRef Name="div_id" />
+          </Key>
+          <Property Name="firm_id" Type="Int32" Nullable="false" />
+          <Property Name="div_id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <Property Name="cf_div_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="freez" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="mst004" Relationship="GarmentBatchModel.FK_mst005_01_mst004" FromRole="mst005_01" ToRole="mst004" />
+          <NavigationProperty Name="mst005" Relationship="GarmentBatchModel.FK_mst005_01_mst005" FromRole="mst005_01" ToRole="mst005" />
+        </EntityType>
+        <Association Name="FK_mst005_01_mst004">
+          <End Type="GarmentBatchModel.mst004" Role="mst004" Multiplicity="1" />
+          <End Type="GarmentBatchModel.mst005_01" Role="mst005_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mst004">
+              <PropertyRef Name="firm_code" />
+            </Principal>
+            <Dependent Role="mst005_01">
+              <PropertyRef Name="firm_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mst005_01_mst005">
+          <End Type="GarmentBatchModel.mst005" Role="mst005" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GarmentBatchModel.mst005_01" Role="mst005_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mst005">
+              <PropertyRef Name="div_id" />
+            </Principal>
+            <Dependent Role="mst005_01">
+              <PropertyRef Name="div_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Batch">
+          <Key>
+            <PropertyRef Name="finYear" />
+            <PropertyRef Name="loomNo" />
+            <PropertyRef Name="BatchNo" />
+          </Key>
+          <Property Name="finYear" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="loomNo" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="BatchNo" Type="Int32" Nullable="false" />
+          <Property Name="BatchCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="inspectorId" Type="Int32" />
+          <Property Name="inspectedDate" Type="DateTime" Precision="3" />
+          <Property Name="prodCode" Type="Int32" />
+          <Property Name="QcCode" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="GwnCode" Type="Int32" />
+          <Property Name="stacksId" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="Mtrs" Type="Int32" />
+          <Property Name="Weight" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="width" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="machinId" Type="Int32" />
+          <Property Name="verifiedId" Type="Int32" />
+          <Property Name="Rejected" Type="Boolean" Nullable="false" />
+          <Property Name="Rejected_Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="transtype" Type="Byte" Nullable="false" />
+          <Property Name="narration" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GradeId" Type="Int32" Nullable="false" />
+          <Property Name="setNo" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="kara" Type="Decimal" Precision="7" Scale="3" />
+          <Property Name="weft" Type="Decimal" Precision="7" Scale="3" />
+          <Property Name="pick" Type="Decimal" Precision="7" Scale="3" />
+          <Property Name="sample_mtr" Type="Decimal" Precision="7" Scale="3" />
+          <Property Name="cutpiece_mtr" Type="Decimal" Precision="7" Scale="3" />
+          <Property Name="beamNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="gray_mtr" Type="Decimal" Precision="7" Scale="3" />
+          <Property Name="std_width" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="std_pick" Type="Decimal" Precision="7" Scale="3" />
+          <Property Name="std_weight" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="CreatedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="finished_Mtr" Type="Decimal" Precision="7" Scale="3" />
+          <Property Name="points" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="grading" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dp" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="sales_orderId" Type="Int64" />
+          <NavigationProperty Name="Batches_01" Relationship="GarmentBatchModel.FK_Batches_01_Batches" FromRole="Batch" ToRole="Batches_01" />
+          <NavigationProperty Name="Batches_02" Relationship="GarmentBatchModel.FK_batches_02_batches" FromRole="Batch" ToRole="Batches_02" />
+          <NavigationProperty Name="grade" Relationship="GarmentBatchModel.FK_Batches_grades" FromRole="Batch" ToRole="grade" />
+          <NavigationProperty Name="Inspector" Relationship="GarmentBatchModel.FK_Batches_Inspectors" FromRole="Batch" ToRole="Inspector" />
+          <NavigationProperty Name="Inspector1" Relationship="GarmentBatchModel.FK_Batches_Inspectors1" FromRole="Batch" ToRole="Inspector" />
+          <NavigationProperty Name="machin" Relationship="GarmentBatchModel.FK_Batches_machins" FromRole="Batch" ToRole="machin" />
+          <NavigationProperty Name="Quality" Relationship="GarmentBatchModel.FK_Batches_products" FromRole="Batch" ToRole="Quality" />
+          <NavigationProperty Name="SetBeem" Relationship="GarmentBatchModel.FK_Batches_SetBeem" FromRole="Batch" ToRole="SetBeem" />
+          <NavigationProperty Name="PackSlipDetls" Relationship="GarmentBatchModel.FK_PackSlipDetl_Batches" FromRole="Batch" ToRole="PackSlipDetl" />
+          <NavigationProperty Name="PackSlipReqdetls" Relationship="GarmentBatchModel.FK_PackSlipReqdetl_Batches" FromRole="Batch" ToRole="PackSlipReqdetl" />
+          <NavigationProperty Name="Batches1" Relationship="GarmentBatchModel.FK_Batches_Batches" FromRole="Batch" ToRole="Batch1" />
+          <NavigationProperty Name="Batch1" Relationship="GarmentBatchModel.FK_Batches_Batches" FromRole="Batch1" ToRole="Batch" />
+          <NavigationProperty Name="mst014" Relationship="GarmentBatchModel.FK_Batches_mst014" FromRole="Batch" ToRole="mst014" />
+          <NavigationProperty Name="sales001" Relationship="GarmentBatchModel.FK_Batches_sales001" FromRole="Batch" ToRole="sales001" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="prodCode" />
+          </Key>
+          <Property Name="prodCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prodName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="gms_limit" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="gpm_min" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="gpm" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="costId" Type="Int32" />
+          <Property Name="shrinkage" Type="Decimal" Nullable="false" Precision="18" Scale="3" />
+          <Property Name="composition" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="color" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="weightOz" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PackSlipheads" Relationship="GarmentBatchModel.FK_PackSliphead_products" FromRole="product" ToRole="PackSliphead" />
+          <NavigationProperty Name="Qualities" Relationship="GarmentBatchModel.FK_Qualities_products" FromRole="product" ToRole="Quality" />
+          <NavigationProperty Name="PackSlipReqheads" Relationship="GarmentBatchModel.FK_PackSlipReqhead_products" FromRole="product" ToRole="PackSlipReqhead" />
+        </EntityType>
+        <Association Name="FK_Batches_01_Batches">
+          <End Type="GarmentBatchModel.Batch" Role="Batch" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GarmentBatchModel.Batches_01" Role="Batches_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch">
+              <PropertyRef Name="finYear" />
+              <PropertyRef Name="loomNo" />
+              <PropertyRef Name="BatchNo" />
+            </Principal>
+            <Dependent Role="Batches_01">
+              <PropertyRef Name="finYear" />
+              <PropertyRef Name="loomNo" />
+              <PropertyRef Name="BatchNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_batches_02_batches">
+          <End Type="GarmentBatchModel.Batch" Role="Batch" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GarmentBatchModel.Batches_02" Role="Batches_02" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch">
+              <PropertyRef Name="finYear" />
+              <PropertyRef Name="loomNo" />
+              <PropertyRef Name="BatchNo" />
+            </Principal>
+            <Dependent Role="Batches_02">
+              <PropertyRef Name="finyear" />
+              <PropertyRef Name="loomNo" />
+              <PropertyRef Name="batchNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batches_grades">
+          <End Type="GarmentBatchModel.grade" Role="grade" Multiplicity="1" />
+          <End Type="GarmentBatchModel.Batch" Role="Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grade">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Batch">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batches_Inspectors">
+          <End Type="GarmentBatchModel.Inspector" Role="Inspector" Multiplicity="0..1" />
+          <End Type="GarmentBatchModel.Batch" Role="Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inspector">
+              <PropertyRef Name="inspectorId" />
+            </Principal>
+            <Dependent Role="Batch">
+              <PropertyRef Name="inspectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batches_Inspectors1">
+          <End Type="GarmentBatchModel.Inspector" Role="Inspector" Multiplicity="0..1" />
+          <End Type="GarmentBatchModel.Batch" Role="Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inspector">
+              <PropertyRef Name="inspectorId" />
+            </Principal>
+            <Dependent Role="Batch">
+              <PropertyRef Name="verifiedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batches_machins">
+          <End Type="GarmentBatchModel.machin" Role="machin" Multiplicity="0..1" />
+          <End Type="GarmentBatchModel.Batch" Role="Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="machin">
+              <PropertyRef Name="machinId" />
+            </Principal>
+            <Dependent Role="Batch">
+              <PropertyRef Name="machinId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batches_products">
+          <End Type="GarmentBatchModel.Quality" Role="Quality" Multiplicity="0..1" />
+          <End Type="GarmentBatchModel.Batch" Role="Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quality">
+              <PropertyRef Name="QcCode" />
+              <PropertyRef Name="prodCode" />
+            </Principal>
+            <Dependent Role="Batch">
+              <PropertyRef Name="QcCode" />
+              <PropertyRef Name="prodCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batches_SetBeem">
+          <End Type="GarmentBatchModel.SetBeem" Role="SetBeem" Multiplicity="0..1" />
+          <End Type="GarmentBatchModel.Batch" Role="Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SetBeem">
+              <PropertyRef Name="setNo" />
+              <PropertyRef Name="beemNo" />
+            </Principal>
+            <Dependent Role="Batch">
+              <PropertyRef Name="setNo" />
+              <PropertyRef Name="beamNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSlipDetl_Batches">
+          <End Type="GarmentBatchModel.Batch" Role="Batch" Multiplicity="1" />
+          <End Type="GarmentBatchModel.PackSlipDetl" Role="PackSlipDetl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch">
+              <PropertyRef Name="finYear" />
+              <PropertyRef Name="loomNo" />
+              <PropertyRef Name="BatchNo" />
+            </Principal>
+            <Dependent Role="PackSlipDetl">
+              <PropertyRef Name="finyear" />
+              <PropertyRef Name="loomNo" />
+              <PropertyRef Name="BatchNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSlipReqdetl_Batches">
+          <End Type="GarmentBatchModel.Batch" Role="Batch" Multiplicity="1" />
+          <End Type="GarmentBatchModel.PackSlipReqdetl" Role="PackSlipReqdetl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch">
+              <PropertyRef Name="finYear" />
+              <PropertyRef Name="loomNo" />
+              <PropertyRef Name="BatchNo" />
+            </Principal>
+            <Dependent Role="PackSlipReqdetl">
+              <PropertyRef Name="finyear" />
+              <PropertyRef Name="loomNo" />
+              <PropertyRef Name="BatchNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSliphead_products">
+          <End Type="GarmentBatchModel.product" Role="product" Multiplicity="1" />
+          <End Type="GarmentBatchModel.PackSliphead" Role="PackSliphead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="prodCode" />
+            </Principal>
+            <Dependent Role="PackSliphead">
+              <PropertyRef Name="prodCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qualities_products">
+          <End Type="GarmentBatchModel.product" Role="product" Multiplicity="1" />
+          <End Type="GarmentBatchModel.Quality" Role="Quality" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="prodCode" />
+            </Principal>
+            <Dependent Role="Quality">
+              <PropertyRef Name="prodCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batches_Batches">
+          <End Type="GarmentBatchModel.Batch" Role="Batch" Multiplicity="1" />
+          <End Type="GarmentBatchModel.Batch" Role="Batch1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Batch">
+              <PropertyRef Name="finYear" />
+              <PropertyRef Name="loomNo" />
+              <PropertyRef Name="BatchNo" />
+            </Principal>
+            <Dependent Role="Batch1">
+              <PropertyRef Name="finYear" />
+              <PropertyRef Name="loomNo" />
+              <PropertyRef Name="BatchNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_grades_grades">
+          <End Type="GarmentBatchModel.grade" Role="grade" Multiplicity="1" />
+          <End Type="GarmentBatchModel.grade" Role="grade1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="grade">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="grade1">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PackSlipReqhead">
+          <Key>
+            <PropertyRef Name="req_id" />
+          </Key>
+          <Property Name="req_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="finyear" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="req_no" Type="Int32" Nullable="false" />
+          <Property Name="req_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="prodCode" Type="Int32" Nullable="false" />
+          <Property Name="QcCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="totalMtrs" Type="Int32" Nullable="false" />
+          <Property Name="accept" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="so_detl" Type="Int64" />
+          <Property Name="cust_id" Type="Int32" />
+          <Property Name="naration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="grade_id" Type="Byte" Nullable="false" />
+          <Property Name="status_id" Type="Byte" Nullable="false" />
+          <Property Name="scannedMtrs" Type="Int32" />
+          <Property Name="isOrderComplete" Type="Boolean" />
+          <NavigationProperty Name="mst011" Relationship="GarmentBatchModel.FK_PackSlipReqhead_mst011" FromRole="PackSlipReqhead" ToRole="mst011" />
+          <NavigationProperty Name="PackSlipheads" Relationship="GarmentBatchModel.FK_PackSliphead_PackSlipReqhead" FromRole="PackSlipReqhead" ToRole="PackSliphead" />
+          <NavigationProperty Name="PackSlipReqdetls" Relationship="GarmentBatchModel.FK_PackSlipReqdetl_PackSlipReqhead" FromRole="PackSlipReqhead" ToRole="PackSlipReqdetl" />
+          <NavigationProperty Name="product" Relationship="GarmentBatchModel.FK_PackSlipReqhead_products" FromRole="PackSlipReqhead" ToRole="product" />
+          <NavigationProperty Name="sales001_01" Relationship="GarmentBatchModel.FK_PackSlipReqhead_sales001_01" FromRole="PackSlipReqhead" ToRole="sales001_01" />
+          <NavigationProperty Name="Quality" Relationship="GarmentBatchModel.FK_PackSlipRequest_Qualities" FromRole="PackSlipReqhead" ToRole="Quality" />
+        </EntityType>
+        <Association Name="FK_PackSlipReqhead_mst011">
+          <End Type="GarmentBatchModel.mst011" Role="mst011" Multiplicity="0..1" />
+          <End Type="GarmentBatchModel.PackSlipReqhead" Role="PackSlipReqhead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mst011">
+              <PropertyRef Name="acc_code" />
+            </Principal>
+            <Dependent Role="PackSlipReqhead">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSliphead_PackSlipReqhead">
+          <End Type="GarmentBatchModel.PackSlipReqhead" Role="PackSlipReqhead" Multiplicity="0..1" />
+          <End Type="GarmentBatchModel.PackSliphead" Role="PackSliphead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PackSlipReqhead">
+              <PropertyRef Name="req_id" />
+            </Principal>
+            <Dependent Role="PackSliphead">
+              <PropertyRef Name="req_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSlipReqdetl_PackSlipReqhead">
+          <End Type="GarmentBatchModel.PackSlipReqhead" Role="PackSlipReqhead" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GarmentBatchModel.PackSlipReqdetl" Role="PackSlipReqdetl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PackSlipReqhead">
+              <PropertyRef Name="req_id" />
+            </Principal>
+            <Dependent Role="PackSlipReqdetl">
+              <PropertyRef Name="req_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSlipReqhead_products">
+          <End Type="GarmentBatchModel.product" Role="product" Multiplicity="1" />
+          <End Type="GarmentBatchModel.PackSlipReqhead" Role="PackSlipReqhead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="prodCode" />
+            </Principal>
+            <Dependent Role="PackSlipReqhead">
+              <PropertyRef Name="prodCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSlipReqhead_sales001_01">
+          <End Type="GarmentBatchModel.sales001_01" Role="sales001_01" Multiplicity="0..1" />
+          <End Type="GarmentBatchModel.PackSlipReqhead" Role="PackSlipReqhead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sales001_01">
+              <PropertyRef Name="detl_id" />
+            </Principal>
+            <Dependent Role="PackSlipReqhead">
+              <PropertyRef Name="so_detl" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackSlipRequest_Qualities">
+          <End Type="GarmentBatchModel.Quality" Role="Quality" Multiplicity="1" />
+          <End Type="GarmentBatchModel.PackSlipReqhead" Role="PackSlipReqhead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quality">
+              <PropertyRef Name="QcCode" />
+              <PropertyRef Name="prodCode" />
+            </Principal>
+            <Dependent Role="PackSlipReqhead">
+              <PropertyRef Name="QcCode" />
+              <PropertyRef Name="prodCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="mst014">
+          <Key>
+            <PropertyRef Name="L_Id" />
+          </Key>
+          <Property Name="L_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="L_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="L_Alias" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="L_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="L_city_id" Type="Int32" />
+          <Property Name="branch_id" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="in_type" Type="Boolean" />
+          <Property Name="CreatedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDt" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Batches" Relationship="GarmentBatchModel.FK_Batches_mst014" FromRole="mst014" ToRole="Batch" />
+          <NavigationProperty Name="mst0141" Relationship="GarmentBatchModel.FK_mst014_mst014" FromRole="mst014" ToRole="mst0141" />
+          <NavigationProperty Name="mst0142" Relationship="GarmentBatchModel.FK_mst014_mst014" FromRole="mst0141" ToRole="mst014" />
+          <NavigationProperty Name="Stacks" Relationship="GarmentBatchModel.FK_Stacks_mst014" FromRole="mst014" ToRole="Stack" />
+          <NavigationProperty Name="mst006" Relationship="GarmentBatchModel.FK_mst014_mst006" FromRole="mst014" ToRole="mst006" />
+        </EntityType>
+        <Association Name="FK_Batches_mst014">
+          <End Type="GarmentBatchModel.mst014" Role="mst014" Multiplicity="0..1" />
+          <End Type="GarmentBatchModel.Batch" Role="Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mst014">
+              <PropertyRef Name="L_Id" />
+            </Principal>
+            <Dependent Role="Batch">
+              <PropertyRef Name="GwnCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mst014_mst014">
+          <End Type="GarmentBatchModel.mst014" Role="mst014" Multiplicity="1" />
+          <End Type="GarmentBatchModel.mst014" Role="mst0141" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="mst014">
+              <PropertyRef Name="L_Id" />
+            </Principal>
+            <Dependent Role="mst0141">
+              <PropertyRef Name="L_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stacks_mst014">
+          <End Type="GarmentBatchModel.mst014" Role="mst014" Multiplicity="1" />
+          <End Type="GarmentBatchModel.Stack" Role="Stack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mst014">
+              <PropertyRef Name="L_Id" />
+            </Principal>
+            <Dependent Role="Stack">
+              <PropertyRef Name="gwnCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="sales001">
+          <Key>
+            <PropertyRef Name="vch_id" />
+          </Key>
+          <Property Name="vch_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fin_year" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="vch_no" Type="Int32" Nullable="false" />
+          <Property Name="vch_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="order_no" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ref_no" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ref_date" Type="DateTime" Precision="0" />
+          <Property Name="cust_id" Type="Int32" Nullable="false" />
+          <Property Name="cust_gstin" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="broker_code" Type="Int32" />
+          <Property Name="broker_gstin" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="delivery_schedule" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="total_amt" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="naration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="delivery_period" Type="Int32" Nullable="false" />
+          <Property Name="ICE_gstTaxpayer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IF_goodsImportar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RC_costomRegister" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="portName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Batches" Relationship="GarmentBatchModel.FK_Batches_sales001" FromRole="sales001" ToRole="Batch" />
+          <NavigationProperty Name="Broker" Relationship="GarmentBatchModel.FK_sales001_Broker" FromRole="sales001" ToRole="Broker" />
+          <NavigationProperty Name="mst011" Relationship="GarmentBatchModel.FK_sales001_customers" FromRole="sales001" ToRole="mst011" />
+          <NavigationProperty Name="sales001_00" Relationship="GarmentBatchModel.FK_sales001_00_sales001" FromRole="sales001" ToRole="sales001_00" />
+          <NavigationProperty Name="sales001_01" Relationship="GarmentBatchModel.FK_sales001_01_sales001" FromRole="sales001" ToRole="sales001_01" />
+        </EntityType>
+        <Association Name="FK_Batches_sales001">
+          <End Type="GarmentBatchModel.sales001" Role="sales001" Multiplicity="0..1" />
+          <End Type="GarmentBatchModel.Batch" Role="Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sales001">
+              <PropertyRef Name="vch_id" />
+            </Principal>
+            <Dependent Role="Batch">
+              <PropertyRef Name="sales_orderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sales001_Broker">
+          <End Type="GarmentBatchModel.Broker" Role="Broker" Multiplicity="0..1" />
+          <End Type="GarmentBatchModel.sales001" Role="sales001" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Broker">
+              <PropertyRef Name="brokerCode" />
+            </Principal>
+            <Dependent Role="sales001">
+              <PropertyRef Name="broker_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sales001_customers">
+          <End Type="GarmentBatchModel.mst011" Role="mst011" Multiplicity="1" />
+          <End Type="GarmentBatchModel.sales001" Role="sales001" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mst011">
+              <PropertyRef Name="acc_code" />
+            </Principal>
+            <Dependent Role="sales001">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sales001_00_sales001">
+          <End Type="GarmentBatchModel.sales001" Role="sales001" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GarmentBatchModel.sales001_00" Role="sales001_00" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="sales001">
+              <PropertyRef Name="vch_id" />
+            </Principal>
+            <Dependent Role="sales001_00">
+              <PropertyRef Name="vch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sales001_01_sales001">
+          <End Type="GarmentBatchModel.sales001" Role="sales001" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GarmentBatchModel.sales001_01" Role="sales001_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sales001">
+              <PropertyRef Name="vch_id" />
+            </Principal>
+            <Dependent Role="sales001_01">
+              <PropertyRef Name="vch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="mst006">
+          <Key>
+            <PropertyRef Name="City_id" />
+          </Key>
+          <Property Name="City_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="City_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City_pin" Type="Int32" />
+          <Property Name="Taluka_id" Type="Int32" Nullable="false" />
+          <Property Name="CreatedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDt" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDt" Type="DateTime" Precision="3" />
+          <Property Name="Country_Code" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mst004" Relationship="GarmentBatchModel.FK_mst004_mst006" FromRole="mst006" ToRole="mst004" />
+          <NavigationProperty Name="mst011_01" Relationship="GarmentBatchModel.FK_mst011_01_mst006" FromRole="mst006" ToRole="mst011_01" />
+          <NavigationProperty Name="mst014" Relationship="GarmentBatchModel.FK_mst014_mst006" FromRole="mst006" ToRole="mst014" />
+        </EntityType>
+        <Association Name="FK_mst004_mst006">
+          <End Type="GarmentBatchModel.mst006" Role="mst006" Multiplicity="0..1" />
+          <End Type="GarmentBatchModel.mst004" Role="mst004" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mst006">
+              <PropertyRef Name="City_id" />
+            </Principal>
+            <Dependent Role="mst004">
+              <PropertyRef Name="firm_cityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mst011_01_mst006">
+          <End Type="GarmentBatchModel.mst006" Role="mst006" Multiplicity="0..1" />
+          <End Type="GarmentBatchModel.mst011_01" Role="mst011_01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mst006">
+              <PropertyRef Name="City_id" />
+            </Principal>
+            <Dependent Role="mst011_01">
+              <PropertyRef Name="city_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mst014_mst006">
+          <End Type="GarmentBatchModel.mst006" Role="mst006" Multiplicity="0..1" />
+          <End Type="GarmentBatchModel.mst014" Role="mst014" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mst006">
+              <PropertyRef Name="City_id" />
+            </Principal>
+            <Dependent Role="mst014">
+              <PropertyRef Name="L_city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GarmentBatchModelStoreContainer" CdmEntityContainer="GarmentBatchEntities">
+          <EntitySetMapping Name="Batches_01">
+            <EntityTypeMapping TypeName="GarmentBatchModel.Batches_01">
+              <MappingFragment StoreEntitySet="Batches_01">
+                <ScalarProperty Name="attachdescr" ColumnName="attachdescr" />
+                <ScalarProperty Name="attachment" ColumnName="attachment" />
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+                <ScalarProperty Name="loomNo" ColumnName="loomNo" />
+                <ScalarProperty Name="finYear" ColumnName="finYear" />
+                <ScalarProperty Name="detl_id" ColumnName="detl_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brokers">
+            <EntityTypeMapping TypeName="GarmentBatchModel.Broker">
+              <MappingFragment StoreEntitySet="Broker">
+                <ScalarProperty Name="GSTN" ColumnName="GSTN" />
+                <ScalarProperty Name="contactNo" ColumnName="contactNo" />
+                <ScalarProperty Name="brokerAddress" ColumnName="brokerAddress" />
+                <ScalarProperty Name="brokerName" ColumnName="brokerName" />
+                <ScalarProperty Name="brokerCode" ColumnName="brokerCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Counts">
+            <EntityTypeMapping TypeName="GarmentBatchModel.Count">
+              <MappingFragment StoreEntitySet="Counts">
+                <ScalarProperty Name="countValue" ColumnName="countValue" />
+                <ScalarProperty Name="CountName" ColumnName="CountName" />
+                <ScalarProperty Name="CountId" ColumnName="CountId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CurrentStocks">
+            <EntityTypeMapping TypeName="GarmentBatchModel.CurrentStock">
+              <MappingFragment StoreEntitySet="CurrentStock">
+                <ScalarProperty Name="createdbyid" ColumnName="createdbyid" />
+                <ScalarProperty Name="scannedDate" ColumnName="scannedDate" />
+                <ScalarProperty Name="Mtrs" ColumnName="Mtrs" />
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+                <ScalarProperty Name="loomNo" ColumnName="loomNo" />
+                <ScalarProperty Name="finyear" ColumnName="finyear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inspectors">
+            <EntityTypeMapping TypeName="GarmentBatchModel.Inspector">
+              <MappingFragment StoreEntitySet="Inspectors">
+                <ScalarProperty Name="inspectorName" ColumnName="inspectorName" />
+                <ScalarProperty Name="inspectorId" ColumnName="inspectorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="localusers">
+            <EntityTypeMapping TypeName="GarmentBatchModel.localuser">
+              <MappingFragment StoreEntitySet="localuser">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="localuser1">
+            <EntityTypeMapping TypeName="GarmentBatchModel.localuser1">
+              <MappingFragment StoreEntitySet="localuser1">
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="userlevel_name" ColumnName="userlevel_name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="localuser3">
+            <EntityTypeMapping TypeName="GarmentBatchModel.localuser3">
+              <MappingFragment StoreEntitySet="localuser3">
+                <ScalarProperty Name="O" ColumnName="O" />
+                <ScalarProperty Name="SysAdmin" ColumnName="SysAdmin" />
+                <ScalarProperty Name="P" ColumnName="P" />
+                <ScalarProperty Name="L" ColumnName="L" />
+                <ScalarProperty Name="D" ColumnName="D" />
+                <ScalarProperty Name="E" ColumnName="E" />
+                <ScalarProperty Name="A" ColumnName="A" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="localuser4">
+            <EntityTypeMapping TypeName="GarmentBatchModel.localuser4">
+              <MappingFragment StoreEntitySet="localuser4">
+                <ScalarProperty Name="O" ColumnName="O" />
+                <ScalarProperty Name="R" ColumnName="R" />
+                <ScalarProperty Name="B" ColumnName="B" />
+                <ScalarProperty Name="P" ColumnName="P" />
+                <ScalarProperty Name="L" ColumnName="L" />
+                <ScalarProperty Name="D" ColumnName="D" />
+                <ScalarProperty Name="E" ColumnName="E" />
+                <ScalarProperty Name="A" ColumnName="A" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="machins">
+            <EntityTypeMapping TypeName="GarmentBatchModel.machin">
+              <MappingFragment StoreEntitySet="machins">
+                <ScalarProperty Name="MachinName" ColumnName="MachinName" />
+                <ScalarProperty Name="machinId" ColumnName="machinId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mills">
+            <EntityTypeMapping TypeName="GarmentBatchModel.Mill">
+              <MappingFragment StoreEntitySet="Mill">
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="GSTIN" ColumnName="GSTIN" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="millName" ColumnName="millName" />
+                <ScalarProperty Name="millCode" ColumnName="millCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="modules">
+            <EntityTypeMapping TypeName="GarmentBatchModel.module">
+              <MappingFragment StoreEntitySet="modules">
+                <ScalarProperty Name="modulename" ColumnName="modulename" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="moduleusers">
+            <EntityTypeMapping TypeName="GarmentBatchModel.moduleuser">
+              <MappingFragment StoreEntitySet="moduleuser">
+                <ScalarProperty Name="moduleid" ColumnName="moduleid" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="packSlip_002">
+            <EntityTypeMapping TypeName="GarmentBatchModel.packSlip_002">
+              <MappingFragment StoreEntitySet="packSlip_002">
+                <ScalarProperty Name="terms" ColumnName="terms" />
+                <ScalarProperty Name="vehical_img" ColumnName="vehical_img" />
+                <ScalarProperty Name="SlipId" ColumnName="SlipId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PackSlipheads">
+            <EntityTypeMapping TypeName="GarmentBatchModel.PackSliphead">
+              <MappingFragment StoreEntitySet="PackSliphead">
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="style_id" ColumnName="style_id" />
+                <ScalarProperty Name="dctype" ColumnName="dctype" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUser" ColumnName="ModifiedUser" />
+                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+                <ScalarProperty Name="req_id" ColumnName="req_id" />
+                <ScalarProperty Name="totalWeight" ColumnName="totalWeight" />
+                <ScalarProperty Name="totalMtrs" ColumnName="totalMtrs" />
+                <ScalarProperty Name="vehicleNo" ColumnName="vehicleNo" />
+                <ScalarProperty Name="Nar" ColumnName="Nar" />
+                <ScalarProperty Name="QcCode" ColumnName="QcCode" />
+                <ScalarProperty Name="prodCode" ColumnName="prodCode" />
+                <ScalarProperty Name="SlipDate" ColumnName="SlipDate" />
+                <ScalarProperty Name="custId" ColumnName="custId" />
+                <ScalarProperty Name="SlipNo" ColumnName="SlipNo" />
+                <ScalarProperty Name="finyear" ColumnName="finyear" />
+                <ScalarProperty Name="SlipId" ColumnName="SlipId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Qualities">
+            <EntityTypeMapping TypeName="GarmentBatchModel.Quality">
+              <MappingFragment StoreEntitySet="Qualities">
+                <ScalarProperty Name="std_width" ColumnName="std_width" />
+                <ScalarProperty Name="Qcalias" ColumnName="Qcalias" />
+                <ScalarProperty Name="QcDescription" ColumnName="QcDescription" />
+                <ScalarProperty Name="prodCode" ColumnName="prodCode" />
+                <ScalarProperty Name="QcCode" ColumnName="QcCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sales001_00">
+            <EntityTypeMapping TypeName="GarmentBatchModel.sales001_00">
+              <MappingFragment StoreEntitySet="sales001_00">
+                <ScalarProperty Name="ModifiedDt" ColumnName="ModifiedDt" />
+                <ScalarProperty Name="ModifiedUser" ColumnName="ModifiedUser" />
+                <ScalarProperty Name="CreatedDt" ColumnName="CreatedDt" />
+                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+                <ScalarProperty Name="vch_id" ColumnName="vch_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sales001_01">
+            <EntityTypeMapping TypeName="GarmentBatchModel.sales001_01">
+              <MappingFragment StoreEntitySet="sales001_01">
+                <ScalarProperty Name="grade_id" ColumnName="grade_id" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="naration" ColumnName="naration" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="mtrs" ColumnName="mtrs" />
+                <ScalarProperty Name="roll" ColumnName="roll" />
+                <ScalarProperty Name="prod_code" ColumnName="prod_code" />
+                <ScalarProperty Name="qc_code" ColumnName="qc_code" />
+                <ScalarProperty Name="vch_id" ColumnName="vch_id" />
+                <ScalarProperty Name="detl_id" ColumnName="detl_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SetBeems">
+            <EntityTypeMapping TypeName="GarmentBatchModel.SetBeem">
+              <MappingFragment StoreEntitySet="SetBeem">
+                <ScalarProperty Name="detl_id" ColumnName="detl_id" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="sb_created_date" ColumnName="sb_created_date" />
+                <ScalarProperty Name="finyear" ColumnName="finyear" />
+                <ScalarProperty Name="invchid" ColumnName="invchid" />
+                <ScalarProperty Name="opvchid" ColumnName="opvchid" />
+                <ScalarProperty Name="deyingLength" ColumnName="deyingLength" />
+                <ScalarProperty Name="beemNo" ColumnName="beemNo" />
+                <ScalarProperty Name="setNo" ColumnName="setNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SetCreations">
+            <EntityTypeMapping TypeName="GarmentBatchModel.SetCreation">
+              <MappingFragment StoreEntitySet="SetCreation">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUser" ColumnName="ModifiedUser" />
+                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="rs" ColumnName="rs" />
+                <ScalarProperty Name="warpCount" ColumnName="warpCount" />
+                <ScalarProperty Name="setNo" ColumnName="setNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stacks">
+            <EntityTypeMapping TypeName="GarmentBatchModel.Stack">
+              <MappingFragment StoreEntitySet="Stacks">
+                <ScalarProperty Name="stacksId" ColumnName="stacksId" />
+                <ScalarProperty Name="gwnCode" ColumnName="gwnCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PackSlipReqdetls">
+            <EntityTypeMapping TypeName="GarmentBatchModel.PackSlipReqdetl">
+              <MappingFragment StoreEntitySet="PackSlipReqdetl">
+                <ScalarProperty Name="mtr" ColumnName="mtr" />
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+                <ScalarProperty Name="loomNo" ColumnName="loomNo" />
+                <ScalarProperty Name="finyear" ColumnName="finyear" />
+                <ScalarProperty Name="req_id" ColumnName="req_id" />
+                <ScalarProperty Name="detl_id" ColumnName="detl_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mst011">
+            <EntityTypeMapping TypeName="GarmentBatchModel.mst011">
+              <MappingFragment StoreEntitySet="mst011">
+                <ScalarProperty Name="AllowAllFirm" ColumnName="AllowAllFirm" />
+                <ScalarProperty Name="ModifiedDt" ColumnName="ModifiedDt" />
+                <ScalarProperty Name="CreatedDt" ColumnName="CreatedDt" />
+                <ScalarProperty Name="ModifiedUser" ColumnName="ModifiedUser" />
+                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+                <ScalarProperty Name="acc_alias" ColumnName="acc_alias" />
+                <ScalarProperty Name="Acc_name" ColumnName="Acc_name" />
+                <ScalarProperty Name="sg_code" ColumnName="sg_code" />
+                <ScalarProperty Name="acc_code" ColumnName="acc_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="grades">
+            <EntityTypeMapping TypeName="GarmentBatchModel.grade">
+              <MappingFragment StoreEntitySet="grades">
+                <ScalarProperty Name="Grade1" ColumnName="Grade" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mst004">
+            <EntityTypeMapping TypeName="GarmentBatchModel.mst004">
+              <MappingFragment StoreEntitySet="mst004">
+                <ScalarProperty Name="firm_bank_holder" ColumnName="firm_bank_holder" />
+                <ScalarProperty Name="eic_no" ColumnName="eic_no" />
+                <ScalarProperty Name="firm_Bankbranch" ColumnName="firm_Bankbranch" />
+                <ScalarProperty Name="firm_swift_code" ColumnName="firm_swift_code" />
+                <ScalarProperty Name="is_membership" ColumnName="is_membership" />
+                <ScalarProperty Name="ModifiedDt" ColumnName="ModifiedDt" />
+                <ScalarProperty Name="CreatedDt" ColumnName="CreatedDt" />
+                <ScalarProperty Name="ModifiedUser" ColumnName="ModifiedUser" />
+                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+                <ScalarProperty Name="natofbus" ColumnName="natofbus" />
+                <ScalarProperty Name="firm_bank_ifsc" ColumnName="firm_bank_ifsc" />
+                <ScalarProperty Name="firm_bank_accno" ColumnName="firm_bank_accno" />
+                <ScalarProperty Name="firm_bank_name" ColumnName="firm_bank_name" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="firm_pan" ColumnName="firm_pan" />
+                <ScalarProperty Name="firm_cin" ColumnName="firm_cin" />
+                <ScalarProperty Name="Jurisdiction" ColumnName="Jurisdiction" />
+                <ScalarProperty Name="firm_cityId" ColumnName="firm_cityId" />
+                <ScalarProperty Name="web_address" ColumnName="web_address" />
+                <ScalarProperty Name="email_id" ColumnName="email_id" />
+                <ScalarProperty Name="firm_fno" ColumnName="firm_fno" />
+                <ScalarProperty Name="firm_address" ColumnName="firm_address" />
+                <ScalarProperty Name="firm_alias" ColumnName="firm_alias" />
+                <ScalarProperty Name="firm_name" ColumnName="firm_name" />
+                <ScalarProperty Name="firm_code" ColumnName="firm_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mst011_01">
+            <EntityTypeMapping TypeName="GarmentBatchModel.mst011_01">
+              <MappingFragment StoreEntitySet="mst011_01">
+                <ScalarProperty Name="cin_no" ColumnName="cin_no" />
+                <ScalarProperty Name="pan_no" ColumnName="pan_no" />
+                <ScalarProperty Name="website" ColumnName="website" />
+                <ScalarProperty Name="year_of_establishment" ColumnName="year_of_establishment" />
+                <ScalarProperty Name="email_id" ColumnName="email_id" />
+                <ScalarProperty Name="off_tel_no" ColumnName="off_tel_no" />
+                <ScalarProperty Name="contact_mobile_no" ColumnName="contact_mobile_no" />
+                <ScalarProperty Name="contact_designation" ColumnName="contact_designation" />
+                <ScalarProperty Name="contact_person" ColumnName="contact_person" />
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="acc_address" ColumnName="acc_address" />
+                <ScalarProperty Name="acc_code" ColumnName="acc_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="localuser2">
+            <EntityTypeMapping TypeName="GarmentBatchModel.localuser2">
+              <MappingFragment StoreEntitySet="localuser2">
+                <ScalarProperty Name="email_id" ColumnName="email_id" />
+                <ScalarProperty Name="mobileno" ColumnName="mobileno" />
+                <ScalarProperty Name="UserLevelID" ColumnName="UserLevelID" />
+                <ScalarProperty Name="UserLongName" ColumnName="UserLongName" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Batches_02">
+            <EntityTypeMapping TypeName="GarmentBatchModel.Batches_02">
+              <MappingFragment StoreEntitySet="Batches_02">
+                <ScalarProperty Name="weft" ColumnName="weft" />
+                <ScalarProperty Name="pick" ColumnName="pick" />
+                <ScalarProperty Name="batchNo" ColumnName="batchNo" />
+                <ScalarProperty Name="loomNo" ColumnName="loomNo" />
+                <ScalarProperty Name="finyear" ColumnName="finyear" />
+                <ScalarProperty Name="pickid" ColumnName="pickid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PackSlipDetls">
+            <EntityTypeMapping TypeName="GarmentBatchModel.PackSlipDetl">
+              <MappingFragment StoreEntitySet="PackSlipDetl">
+                <ScalarProperty Name="scanned" ColumnName="scanned" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="mtr" ColumnName="mtr" />
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+                <ScalarProperty Name="loomNo" ColumnName="loomNo" />
+                <ScalarProperty Name="finyear" ColumnName="finyear" />
+                <ScalarProperty Name="SlipId" ColumnName="SlipId" />
+                <ScalarProperty Name="slipdetlId" ColumnName="slipdetlId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mst005">
+            <EntityTypeMapping TypeName="GarmentBatchModel.mst005">
+              <MappingFragment StoreEntitySet="mst005">
+                <ScalarProperty Name="ModifiedDt" ColumnName="ModifiedDt" />
+                <ScalarProperty Name="CreatedDt" ColumnName="CreatedDt" />
+                <ScalarProperty Name="ModifiedUser" ColumnName="ModifiedUser" />
+                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+                <ScalarProperty Name="prefix" ColumnName="prefix" />
+                <ScalarProperty Name="tdt" ColumnName="tdt" />
+                <ScalarProperty Name="fdt" ColumnName="fdt" />
+                <ScalarProperty Name="from_div_id" ColumnName="from_div_id" />
+                <ScalarProperty Name="div_id" ColumnName="div_id" />
+                <ScalarProperty Name="finid" ColumnName="finid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mst005_01">
+            <EntityTypeMapping TypeName="GarmentBatchModel.mst005_01">
+              <MappingFragment StoreEntitySet="mst005_01">
+                <ScalarProperty Name="freez" ColumnName="freez" />
+                <ScalarProperty Name="cf_div_id" ColumnName="cf_div_id" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="div_id" ColumnName="div_id" />
+                <ScalarProperty Name="firm_id" ColumnName="firm_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Batches">
+            <EntityTypeMapping TypeName="GarmentBatchModel.Batch">
+              <MappingFragment StoreEntitySet="Batches">
+                <ScalarProperty Name="sales_orderId" ColumnName="sales_orderId" />
+                <ScalarProperty Name="dp" ColumnName="dp" />
+                <ScalarProperty Name="grading" ColumnName="grading" />
+                <ScalarProperty Name="points" ColumnName="points" />
+                <ScalarProperty Name="finished_Mtr" ColumnName="finished_Mtr" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUser" ColumnName="ModifiedUser" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+                <ScalarProperty Name="std_weight" ColumnName="std_weight" />
+                <ScalarProperty Name="std_pick" ColumnName="std_pick" />
+                <ScalarProperty Name="std_width" ColumnName="std_width" />
+                <ScalarProperty Name="gray_mtr" ColumnName="gray_mtr" />
+                <ScalarProperty Name="beamNo" ColumnName="beamNo" />
+                <ScalarProperty Name="cutpiece_mtr" ColumnName="cutpiece_mtr" />
+                <ScalarProperty Name="sample_mtr" ColumnName="sample_mtr" />
+                <ScalarProperty Name="pick" ColumnName="pick" />
+                <ScalarProperty Name="weft" ColumnName="weft" />
+                <ScalarProperty Name="kara" ColumnName="kara" />
+                <ScalarProperty Name="setNo" ColumnName="setNo" />
+                <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="transtype" ColumnName="transtype" />
+                <ScalarProperty Name="Rejected_Reason" ColumnName="Rejected_Reason" />
+                <ScalarProperty Name="Rejected" ColumnName="Rejected" />
+                <ScalarProperty Name="verifiedId" ColumnName="verifiedId" />
+                <ScalarProperty Name="machinId" ColumnName="machinId" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Mtrs" ColumnName="Mtrs" />
+                <ScalarProperty Name="stacksId" ColumnName="stacksId" />
+                <ScalarProperty Name="GwnCode" ColumnName="GwnCode" />
+                <ScalarProperty Name="QcCode" ColumnName="QcCode" />
+                <ScalarProperty Name="prodCode" ColumnName="prodCode" />
+                <ScalarProperty Name="inspectedDate" ColumnName="inspectedDate" />
+                <ScalarProperty Name="inspectorId" ColumnName="inspectorId" />
+                <ScalarProperty Name="BatchCreated" ColumnName="BatchCreated" />
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+                <ScalarProperty Name="loomNo" ColumnName="loomNo" />
+                <ScalarProperty Name="finYear" ColumnName="finYear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="GarmentBatchModel.product">
+              <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="weightOz" ColumnName="weightOz" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="composition" ColumnName="composition" />
+                <ScalarProperty Name="shrinkage" ColumnName="shrinkage" />
+                <ScalarProperty Name="costId" ColumnName="costId" />
+                <ScalarProperty Name="gpm" ColumnName="gpm" />
+                <ScalarProperty Name="gpm_min" ColumnName="gpm_min" />
+                <ScalarProperty Name="gms_limit" ColumnName="gms_limit" />
+                <ScalarProperty Name="prodName" ColumnName="prodName" />
+                <ScalarProperty Name="prodCode" ColumnName="prodCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PackSlipReqheads">
+            <EntityTypeMapping TypeName="GarmentBatchModel.PackSlipReqhead">
+              <MappingFragment StoreEntitySet="PackSlipReqhead">
+                <ScalarProperty Name="isOrderComplete" ColumnName="isOrderComplete" />
+                <ScalarProperty Name="scannedMtrs" ColumnName="scannedMtrs" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="grade_id" ColumnName="grade_id" />
+                <ScalarProperty Name="naration" ColumnName="naration" />
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+                <ScalarProperty Name="so_detl" ColumnName="so_detl" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUser" ColumnName="ModifiedUser" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+                <ScalarProperty Name="accept" ColumnName="accept" />
+                <ScalarProperty Name="totalMtrs" ColumnName="totalMtrs" />
+                <ScalarProperty Name="QcCode" ColumnName="QcCode" />
+                <ScalarProperty Name="prodCode" ColumnName="prodCode" />
+                <ScalarProperty Name="req_date" ColumnName="req_date" />
+                <ScalarProperty Name="req_no" ColumnName="req_no" />
+                <ScalarProperty Name="finyear" ColumnName="finyear" />
+                <ScalarProperty Name="req_id" ColumnName="req_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mst014">
+            <EntityTypeMapping TypeName="GarmentBatchModel.mst014">
+              <MappingFragment StoreEntitySet="mst014">
+                <ScalarProperty Name="ModifiedDt" ColumnName="ModifiedDt" />
+                <ScalarProperty Name="CreatedDt" ColumnName="CreatedDt" />
+                <ScalarProperty Name="ModifiedUser" ColumnName="ModifiedUser" />
+                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+                <ScalarProperty Name="in_type" ColumnName="in_type" />
+                <ScalarProperty Name="branch_id" ColumnName="branch_id" />
+                <ScalarProperty Name="L_city_id" ColumnName="L_city_id" />
+                <ScalarProperty Name="L_Address" ColumnName="L_Address" />
+                <ScalarProperty Name="L_Alias" ColumnName="L_Alias" />
+                <ScalarProperty Name="L_Name" ColumnName="L_Name" />
+                <ScalarProperty Name="L_Id" ColumnName="L_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sales001">
+            <EntityTypeMapping TypeName="GarmentBatchModel.sales001">
+              <MappingFragment StoreEntitySet="sales001">
+                <ScalarProperty Name="portName" ColumnName="portName" />
+                <ScalarProperty Name="RC_costomRegister" ColumnName="RC_costomRegister" />
+                <ScalarProperty Name="IF_goodsImportar" ColumnName="IF_goodsImportar" />
+                <ScalarProperty Name="ICE_gstTaxpayer" ColumnName="ICE_gstTaxpayer" />
+                <ScalarProperty Name="delivery_period" ColumnName="delivery_period" />
+                <ScalarProperty Name="naration" ColumnName="naration" />
+                <ScalarProperty Name="total_amt" ColumnName="total_amt" />
+                <ScalarProperty Name="delivery_schedule" ColumnName="delivery_schedule" />
+                <ScalarProperty Name="broker_gstin" ColumnName="broker_gstin" />
+                <ScalarProperty Name="broker_code" ColumnName="broker_code" />
+                <ScalarProperty Name="cust_gstin" ColumnName="cust_gstin" />
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+                <ScalarProperty Name="ref_date" ColumnName="ref_date" />
+                <ScalarProperty Name="ref_no" ColumnName="ref_no" />
+                <ScalarProperty Name="order_no" ColumnName="order_no" />
+                <ScalarProperty Name="vch_date" ColumnName="vch_date" />
+                <ScalarProperty Name="vch_no" ColumnName="vch_no" />
+                <ScalarProperty Name="fin_year" ColumnName="fin_year" />
+                <ScalarProperty Name="vch_id" ColumnName="vch_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mst006">
+            <EntityTypeMapping TypeName="GarmentBatchModel.mst006">
+              <MappingFragment StoreEntitySet="mst006">
+                <ScalarProperty Name="Country_Code" ColumnName="Country_Code" />
+                <ScalarProperty Name="ModifiedDt" ColumnName="ModifiedDt" />
+                <ScalarProperty Name="CreatedDt" ColumnName="CreatedDt" />
+                <ScalarProperty Name="ModifiedUser" ColumnName="ModifiedUser" />
+                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+                <ScalarProperty Name="Taluka_id" ColumnName="Taluka_id" />
+                <ScalarProperty Name="City_pin" ColumnName="City_pin" />
+                <ScalarProperty Name="City_name" ColumnName="City_name" />
+                <ScalarProperty Name="City_id" ColumnName="City_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
